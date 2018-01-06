@@ -21,21 +21,25 @@ public class Etudiant {
 
 
 
-    public void LireFichierEtu(){
+    public static String lireFichierEtu(){
         try {
             //Ouverture et lecture du fichier étudiant
             File f = new File (System.getProperty("user.dir")+"/etu.csv");
             InputStream in = new FileInputStream(f);
-            InputStreamReader reader = new InputStreamReader(f);
+            InputStreamReader reader = new InputStreamReader(in);
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line = bufferedReader.readLine();
+            //On créé une String qui affiche les données du fichier etu.csv
+            String fichier = "";
             while (line != null){
                 line  = bufferedReader.readLine();
+                fichier = fichier + line + "\n";
             }
-            System.out.println(line)
+            return fichier;
         }
         catch (IOException e) {
             e.printStackTrace();
+            return "Exception dans la lecture du fichier etu.csv";
         }
     }
 
