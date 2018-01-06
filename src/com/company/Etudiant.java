@@ -21,16 +21,18 @@ public class Etudiant {
 
 
 
-    public void LireFichierEtu(File f){
+    public void LireFichierEtu(){
         try {
-            //Ouverture du fichier étudiant
+            //Ouverture et lecture du fichier étudiant
             File f = new File (System.getProperty("user.dir")+"/etu.csv");
+            InputStream in = new FileInputStream(f);
             InputStreamReader reader = new InputStreamReader(f);
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line = bufferedReader.readLine();
             while (line != null){
                 line  = bufferedReader.readLine();
             }
+            System.out.println(line)
         }
         catch (IOException e) {
             e.printStackTrace();
