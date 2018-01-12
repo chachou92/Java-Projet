@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 
 public class Etudiants {
-    private int id;
+    /*private int id;
     private ArrayList<String> listeCours;
 
-    /*public Etudiant (int numero, ArrayList<String> liste){
+    public Etudiant (int numero, ArrayList<String> liste){
         id = numero;
         listeCours = liste;
     }
