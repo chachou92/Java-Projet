@@ -6,17 +6,20 @@ import java.util.Objects;
 
 public class Cours {
     private String nomCours;
+    private int coursOuTD; //0 si cours, 1 si TD
     private int nombreTd;
 
     //Constructeurs
 
-    public Cours(String nomCours, int nombreTd) {
+    public Cours(String nomCours,int coursOuTD, int nombreTd) {
         this.nomCours = nomCours;
+        this.coursOuTD = coursOuTD;
         this.nombreTd = nombreTd;
     }
 
     public Cours() {
         nomCours = "";
+        coursOuTD = 0;
         nombreTd = 0;
     }
 
@@ -25,9 +28,12 @@ public class Cours {
         return nomCours;
     }
 
+    public int getCoursOuTD() { return coursOuTD; }
+
     public int getNombreTd() {
         return nombreTd;
     }
+
 
 //On va cree une méthode qui retourne la liste des etudiants qui participent au cours
 //D'abord on va chercher l'index du cours dans notre liste infoEtu
@@ -54,31 +60,8 @@ public class Cours {
         }
         return participe;
     }
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
     //Methode pour lire le fichier edt.csv
     public static String lireFichierEdt(){
         try {
@@ -102,8 +85,71 @@ public class Cours {
         }
     }
 
+
+    //Méthode pour avoir les infos sur l'emploi du temps
+    public static ArrayList<ArrayList<String>> infoEmploisDuTemps() {
+
+        ArrayList<ArrayList<String>> infoEdt = new ArrayList<ArrayList<String>>();
+
+        String fichier = lireFichierEdt();
+
+        for (String ligne : fichier.split("\n")) {
+            ArrayList<String> ligneEdt = new ArrayList<String>();
+            String[] pointVirgule = ligne.split(";");
+            for (int i = 0; i< pointVirgule.length ; i++){
+                ligneEdt.add(pointVirgule[i]);
+            }
+
+            infoEdt.add(ligneEdt);
+
+        }
+        //On enleve la derniere liste correspondant à [null]
+        infoEdt.remove(infoEdt.size()-1);
+
+        return infoEdt;
+    }
+
+    //Méthode pour changer nombreTD
+    public void infoCoursOuTD (){
+        ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
+        for (int i = 0; i < infoEdt.size() ; i++){
+            if (infoEdt.get(i).indexOf(nomCours) !=-1){
+                coursOuTD = 0;
+            }
+            else{
+                for (int j = 0; j < infoEdt.get(i).size() ; j++){
+                    if (infoEdt.get(i).get(j).contains(nomCours+"_")){
+                        coursOuTD = 1;
+                    }
+                }
+            }
+        }
+    }
 }
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

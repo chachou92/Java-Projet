@@ -12,9 +12,11 @@ public class Main {
         System.out.println("Que voulez-vous faire?");
 
         //test
-        Cours Java = new Cours ("JAVA",0);
+       /* Cours Java = new Cours ("JAVA",0);
         int i = Java.indice();
-        System.out.println(Java.participe());
+        System.out.println(Java.participe());*/
+
+       System.out.println(Cours.infoEmploisDuTemps());
 
 
 
