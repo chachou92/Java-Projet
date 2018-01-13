@@ -3,8 +3,6 @@ package com.company;
 import java.io.*;
 
 public class Cours {
-}
-
 
 
 
@@ -30,3 +28,9 @@ public class Cours {
             return "Exception dans la lecture du fichier edt.csv";
         }
     }
+
+}
+
+
+
+

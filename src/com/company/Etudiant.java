@@ -3,8 +3,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-public class Etudiants {
-    /*private int id;
+public class Etudiant {
+    /*
+    private int id;
     private ArrayList<String> listeCours;
 
     public Etudiant (int numero, ArrayList<String> liste){
