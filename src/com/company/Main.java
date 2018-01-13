@@ -11,7 +11,16 @@ public class Main {
         //Options du menu
         System.out.println("Que voulez-vous faire?");
 
+        //test
+        Cours Java = new Cours ("JAVA",0);
+        int i = Java.indice();
+        System.out.println(Java.participe());
 
+
+
+
+
+        /*
         int reponse;
 
         do {
@@ -21,10 +30,12 @@ public class Main {
             System.out.println("3. Afficher l'affectattion des eleves dans les TD");
             System.out.println("4. Changer le nombre maximal d'eleves par TD");
 
-            Scanner scan = new Scanner (System.in);
-            reponse=scan.nextInt();
+            System.out.println(Cours.participe());
 
-           /* //On verifie que la réponse est correcte
+            Scanner scan = new Scanner(System.in);
+            reponse = scan.nextInt();
+
+           //On verifie que la réponse est correcte
             try  {
                 if ( !(reponse >=1 && reponse <=4) )
                     throw new ReponseException ();
@@ -32,7 +43,7 @@ public class Main {
             catch (ReponseException e){
                 System.out.println("Merci de taper 1,2,3 ou 4 et de relancer le programme");
                 scan.close();
-            } */
+            }
 
 
 
@@ -64,5 +75,7 @@ public class Main {
 
     }
 
+*/
 
+    }
 }

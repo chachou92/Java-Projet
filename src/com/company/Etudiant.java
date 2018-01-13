@@ -2,20 +2,12 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
+/* On créé une classe Etudiant qui:
+- lit le fichier etu.csv et retourne un tableau de String contentant les informations du fichier pour chaque etudiant
+- créé une liste avec les informations étudiant par étudiant
+*/
 
 public class Etudiant {
-    /*
-    private int id;
-    private ArrayList<String> listeCours;
-
-    public Etudiant (int numero, ArrayList<String> liste){
-        id = numero;
-        listeCours = liste;
-    }
-    public Etudiant (){
-        id = 0;
-        listeCours = new ArrayList<String>();
-    } */
 
     //Methode pour lire le fichier etu.csv
     public static String lireFichierEtu(){
@@ -44,7 +36,7 @@ public class Etudiant {
         }
     }
 
-    //Méthode pour avoir chaque information sur chaque etudiant
+    //Méthode pour avoir chaque information sur chaque etudiant : retourne une Arraylist d'Arraylist
     public static ArrayList<ArrayList<String>> infoEtudiant() {
 
         ArrayList<ArrayList<String>> infoEtu = new ArrayList<ArrayList<String>>();
@@ -61,11 +53,9 @@ public class Etudiant {
             infoEtu.add(ligneEtu);
 
             }
+            //On enleve la derniere liste correspondant à [null]
+            infoEtu.remove(infoEtu.size()-1);
+
         return infoEtu;
     }
-
-    //Méthode pour trouver les informations sur un etudiant
-
-
-
 }
