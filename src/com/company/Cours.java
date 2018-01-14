@@ -6,20 +6,17 @@ import java.util.Objects;
 
 public class Cours {
     private String nomCours;
-    private int coursOuTD; //0 si cours, 1 si TD
     private int nombreTd;
 
     //Constructeurs
 
-    public Cours(String nomCours,int coursOuTD, int nombreTd) {
+    public Cours(String nomCours, int nombreTd) {
         this.nomCours = nomCours;
-        this.coursOuTD = coursOuTD;
         this.nombreTd = nombreTd;
     }
 
     public Cours() {
         nomCours = "";
-        coursOuTD = 0;
         nombreTd = 0;
     }
 
@@ -28,7 +25,6 @@ public class Cours {
         return nomCours;
     }
 
-    public int getCoursOuTD() { return coursOuTD; }
 
     public int getNombreTd() {
         return nombreTd;
@@ -50,17 +46,16 @@ public class Cours {
     //Méthode participe()
     public ArrayList<String> participe() {
         ArrayList<String> participe = new ArrayList<String>();
-        ArrayList<ArrayList<String>>ie = Etudiant.infoEtudiant();
+        ArrayList<ArrayList<String>> ie = Etudiant.infoEtudiant();
         for (int i = 1; i < (ie.size()); i++) {
             ArrayList<String> p = ie.get(i);
             System.out.println(p);
-            if (p.get(indice()).equals("1")){
+            if (p.get(indice()).equals("1")) {
                 participe.add(p.get(0));
             }
         }
         return participe;
     }
-
 
     //Methode pour lire le fichier edt.csv
     public static String lireFichierEdt(){
@@ -109,47 +104,20 @@ public class Cours {
         return infoEdt;
     }
 
-    //Méthode pour changer nombreTD
-    public void infoCoursOuTD (){
+    //Méthode pour compter nombreTD
+    public void infoNombreTD (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
         for (int i = 0; i < infoEdt.size() ; i++){
             if (infoEdt.get(i).indexOf(nomCours) !=-1){
-                coursOuTD = 0;
+                nombreTd = 0;
             }
             else{
                 for (int j = 0; j < infoEdt.get(i).size() ; j++){
                     if (infoEdt.get(i).get(j).contains(nomCours+"_")){
-                        coursOuTD = 1;
+                        nombreTd += 1;
                     }
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
