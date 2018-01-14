@@ -12,11 +12,15 @@ public class Main {
         System.out.println("Que voulez-vous faire?");
 
         //test
-       /* Cours Java = new Cours ("JAVA",0);
-        int i = Java.indice();
-        System.out.println(Java.participe());*/
+       Cours Graphes = new Cours ("Graphes");
+       Cours Java = new Cours ("Java");
+       Cours Communication = new Cours ("Communication");
+        int i = Graphes.indice();
+        System.out.println(Java.nombreTD());
+        System.out.println(Communication.nombreTD());
 
-       System.out.println(Cours.infoEmploisDuTemps());
+
+
 
 
 

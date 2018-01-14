@@ -6,19 +6,16 @@ import java.util.Objects;
 
 public class Cours {
     private String nomCours;
-    private int coursOuTD; //Si égal à 1 alors TD sinon, cours
-    private int nombreTd;
+    //private int coursOuTD; //Si égal à 1 alors TD sinon, cours
 
     //Constructeurs
 
-    public Cours(String nomCours, int nombreTd) {
+    public Cours(String nomCours) {
         this.nomCours = nomCours;
-        this.nombreTd = nombreTd;
     }
 
     public Cours() {
         nomCours = "";
-        nombreTd = 0;
     }
 
     //Méthodes get()
@@ -26,12 +23,7 @@ public class Cours {
         return nomCours;
     }
 
-    public int getCoursOuTD () { return coursOuTD; }
-
-    public int getNombreTd() {
-        return nombreTd;
-    }
-
+    //public int getCoursOuTD () { return coursOuTD; }
 
 //On va cree une méthode qui retourne la liste des etudiants qui participent au cours
 //D'abord on va chercher l'index du cours dans notre liste infoEtu
@@ -108,6 +100,7 @@ public class Cours {
 
     //Méthode pour savoir si c'est un cours un TD
     public void infoCoursOuTD (){
+        int coursOuTD;
         if (nomCours.contains("_"))
             coursOuTD = 1;
         else
@@ -115,7 +108,7 @@ public class Cours {
     }
 
     //Méthode pour compter nombreTD
-    public void infoNombreTD (){
+    public int nombreTD (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
         int s = 0;
         for (int i = 0; i < infoEdt.size() ; i++){
@@ -126,6 +119,6 @@ public class Cours {
                 }
 
         }
-        nombreTd = s;
+        return s;
     }
 }
