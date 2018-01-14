@@ -25,7 +25,7 @@ public class Cours {
 
     //public int getCoursOuTD () { return coursOuTD; }
 
-//On va cree une méthode qui retourne la liste des etudiants qui participent au cours
+//On va creer une méthode qui retourne la liste des etudiants qui participent au cours
 //D'abord on va chercher l'index du cours dans notre liste infoEtu
 
     //Methode indice()
@@ -35,6 +35,12 @@ public class Cours {
         listeNomCours = Etudiant.infoEtudiant().get(0);
         index = listeNomCours.indexOf(getNomCours());
         return index;
+    }
+
+    //Methode toString pour afficher les Cours
+    @Override
+    public String toString() {
+        return nomCours;
     }
 
     //Méthode participe()
@@ -111,14 +117,51 @@ public class Cours {
     public int nombreTD (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
         int s = 0;
+        ArrayList<String> verif = new ArrayList<String>(); //On ajoute les éléments qu'on trouve dans cette liste et grace à elle on vérifie qu'on n'incrémente pas s quand on tombe deux fois sur le même cours mais qui a lieu par exemple deux heures de suite
         for (int i = 0; i < infoEdt.size() ; i++){
                 for (int j = 0; j < infoEdt.get(i).size() ; j++){
-                    if (infoEdt.get(i).get(j).contains(nomCours+"_")){
-                        s += 1;
+                    if(infoEdt.get(i).get(j).contains(" ")){
+                        String [] Espace = infoEdt.get(i).get(j).split(" "); //Compter les TD de la même matière mais qui ont lieu en même temps
+                        for (int k = 0; k < Espace.length; k++){
+                            if(Espace[k].contains(nomCours+"_") && verif.indexOf(Espace[k])==-1){
+                                s += 1;
+                                verif.add(Espace[k]);
+                            }
+                        }
                     }
+                    else{
+                        if (infoEdt.get(i).get(j).contains(nomCours+"_") && verif.indexOf(infoEdt.get(i).get(j)) ==-1){
+                            s += 1;
+                            verif.add(infoEdt.get(i).get(j));
+                        }
+                    }
+
                 }
 
         }
         return s;
     }
+
+    //Méthode pour savoir quels cours se passent en même temps
+    public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (){
+        ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
+        ArrayList<ArrayList<Cours>> coursEnMemeTemps = new ArrayList<ArrayList<Cours>>();
+        for (int i = 0; i < infoEdt.size(); i++){
+            for (int j = 0; j < infoEdt.get(i).size(); j++){
+                if (infoEdt.get(i).get(j).contains((" "))){
+                    ArrayList<Cours> memeCreneau = new ArrayList<Cours>();
+                    String [] creneau = infoEdt.get(i).get(j).split(" ");
+                    for (int k = 0; k < creneau.length; k++){
+                        Cours c = new Cours(creneau[k]);
+                        memeCreneau.add(c);
+                    }
+                    coursEnMemeTemps.add(memeCreneau);
+                }
+
+            }
+        }
+        return coursEnMemeTemps;
+    }
+
+
 }

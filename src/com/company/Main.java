@@ -15,9 +15,23 @@ public class Main {
        Cours Graphes = new Cours ("Graphes");
        Cours Java = new Cours ("Java");
        Cours Communication = new Cours ("Communication");
-        int i = Graphes.indice();
-        System.out.println(Java.nombreTD());
-        System.out.println(Communication.nombreTD());
+       Cours GenieLogiciel = new Cours ("GenieLogiciel");
+       Cours LV2Espagnol = new Cours ("LV2Espagnol");
+       int i = Graphes.indice();
+       System.out.println("Java");
+       System.out.println(Java.nombreTD());
+       System.out.println("Communication");
+       System.out.println(Communication.nombreTD());
+       System.out.println("GenieLogiciel");
+       System.out.println(GenieLogiciel.nombreTD());
+       System.out.println("LV2Espagnol");
+       System.out.println(LV2Espagnol.nombreTD());
+
+       System.out.println("Les cours qui ont les memes creneaux sont:");
+       System.out.println(Cours.coursEnMemeTemps());
+
+
+
 
 
 
