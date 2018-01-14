@@ -116,7 +116,7 @@ public class Cours {
     //Méthode pour compter nombreTD
     public int nombreTD (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
-        int s = 0;
+        int s = 0; //Compteur qui s'incrémente des qu'il trouve un TD correspondant à un cours
         ArrayList<String> verif = new ArrayList<String>(); //On ajoute les éléments qu'on trouve dans cette liste et grace à elle on vérifie qu'on n'incrémente pas s quand on tombe deux fois sur le même cours mais qui a lieu par exemple deux heures de suite
         for (int i = 0; i < infoEdt.size() ; i++){
                 for (int j = 0; j < infoEdt.get(i).size() ; j++){
