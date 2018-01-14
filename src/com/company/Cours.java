@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Cours {
     private String nomCours;
+    private int coursOuTD; //Si égal à 1 alors TD sinon, cours
     private int nombreTd;
 
     //Constructeurs
@@ -25,6 +26,7 @@ public class Cours {
         return nomCours;
     }
 
+    public int getCoursOuTD () { return coursOuTD; }
 
     public int getNombreTd() {
         return nombreTd;
@@ -104,20 +106,26 @@ public class Cours {
         return infoEdt;
     }
 
+    //Méthode pour savoir si c'est un cours un TD
+    public void infoCoursOuTD (){
+        if (nomCours.contains("_"))
+            coursOuTD = 1;
+        else
+            coursOuTD = 0;
+    }
+
     //Méthode pour compter nombreTD
     public void infoNombreTD (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
+        int s = 0;
         for (int i = 0; i < infoEdt.size() ; i++){
-            if (infoEdt.get(i).indexOf(nomCours) !=-1){
-                nombreTd = 0;
-            }
-            else{
                 for (int j = 0; j < infoEdt.get(i).size() ; j++){
                     if (infoEdt.get(i).get(j).contains(nomCours+"_")){
-                        nombreTd += 1;
+                        s += 1;
                     }
                 }
-            }
+
         }
+        nombreTd = s;
     }
 }
