@@ -28,9 +28,10 @@ public class Main {
        System.out.println(LV2Espagnol.nombreTD());
 
        System.out.println("Les cours qui ont les memes creneaux sont:");
-       System.out.println(Cours.coursEnMemeTemps());
+       System.out.println(LectureFichiers.coursEnMemeTemps());
 
-
+       System.out.println("TD de Java");
+       System.out.println(Java.TD());
 
 
 

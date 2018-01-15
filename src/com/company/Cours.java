@@ -32,7 +32,7 @@ public class Cours {
     public int indice() {
         int index;
         ArrayList<String> listeNomCours = new ArrayList<String>();
-        listeNomCours = Etudiant.infoEtudiant().get(0);
+        listeNomCours = LectureFichiers.infoEtudiant().get(0);
         index = listeNomCours.indexOf(getNomCours());
         return index;
     }
@@ -46,7 +46,7 @@ public class Cours {
     //Méthode participe()
     public ArrayList<String> participe() {
         ArrayList<String> participe = new ArrayList<String>();
-        ArrayList<ArrayList<String>> ie = Etudiant.infoEtudiant();
+        ArrayList<ArrayList<String>> ie = LectureFichiers.infoEtudiant();
         for (int i = 1; i < (ie.size()); i++) {
             ArrayList<String> p = ie.get(i);
             System.out.println(p);
@@ -57,52 +57,7 @@ public class Cours {
         return participe;
     }
 
-    //Methode pour lire le fichier edt.csv
-    public static String lireFichierEdt(){
-        try {
-            //Ouverture et lecture du fichier emploi du temps
-            File f = new File (System.getProperty("user.dir")+"/edt.csv");
-            InputStream in = new FileInputStream(f);
-            InputStreamReader reader = new InputStreamReader(in);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String line = bufferedReader.readLine();
-            //On créé une String qui affiche les données du fichier edt.csv
-            String fichier = "";
-            while (line != null){
-                line  = bufferedReader.readLine();
-                fichier = fichier + line + "\n";
-            }
-            return fichier;
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            return "Exception dans la lecture du fichier edt.csv";
-        }
-    }
 
-
-    //Méthode pour avoir les infos sur l'emploi du temps
-    public static ArrayList<ArrayList<String>> infoEmploisDuTemps() {
-
-        ArrayList<ArrayList<String>> infoEdt = new ArrayList<ArrayList<String>>();
-
-        String fichier = lireFichierEdt();
-
-        for (String ligne : fichier.split("\n")) {
-            ArrayList<String> ligneEdt = new ArrayList<String>();
-            String[] pointVirgule = ligne.split(";");
-            for (int i = 0; i< pointVirgule.length ; i++){
-                ligneEdt.add(pointVirgule[i]);
-            }
-
-            infoEdt.add(ligneEdt);
-
-        }
-        //On enleve la derniere liste correspondant à [null]
-        infoEdt.remove(infoEdt.size()-1);
-
-        return infoEdt;
-    }
 
     //Méthode pour savoir si c'est un cours un TD
     public void infoCoursOuTD (){
@@ -115,7 +70,7 @@ public class Cours {
 
     //Méthode pour compter nombreTD
     public int nombreTD (){
-        ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
+        ArrayList<ArrayList<String>> infoEdt = LectureFichiers.infoEmploisDuTemps();
         int s = 0; //Compteur qui s'incrémente des qu'il trouve un TD correspondant à un cours
         ArrayList<String> verif = new ArrayList<String>(); //On ajoute les éléments qu'on trouve dans cette liste et grace à elle on vérifie qu'on n'incrémente pas s quand on tombe deux fois sur le même cours mais qui a lieu par exemple deux heures de suite
         for (int i = 0; i < infoEdt.size() ; i++){
@@ -142,26 +97,14 @@ public class Cours {
         return s;
     }
 
-    //Méthode pour savoir quels cours se passent en même temps
-    public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (){
-        ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
-        ArrayList<ArrayList<Cours>> coursEnMemeTemps = new ArrayList<ArrayList<Cours>>();
-        for (int i = 0; i < infoEdt.size(); i++){
-            for (int j = 0; j < infoEdt.get(i).size(); j++){
-                if (infoEdt.get(i).get(j).contains((" "))){
-                    ArrayList<Cours> memeCreneau = new ArrayList<Cours>();
-                    String [] creneau = infoEdt.get(i).get(j).split(" ");
-                    for (int k = 0; k < creneau.length; k++){
-                        Cours c = new Cours(creneau[k]);
-                        memeCreneau.add(c);
-                    }
-                    coursEnMemeTemps.add(memeCreneau);
-                }
-
-            }
+    //Methode qui cree une liste de Cours qui correspond aux differents TDs
+    public ArrayList<Cours> TD (){
+        ArrayList<Cours> TD =  new ArrayList<Cours>();
+        for (int i = 0; i < nombreTD(); i++){
+            Cours c = new Cours(nomCours+"_"+(i+1));
+            TD.add(c);
         }
-        return coursEnMemeTemps;
+        return TD;
     }
-
 
 }
