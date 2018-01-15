@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /* On cree une classe LectureFichiers qui gere la lecture et la recuperation des informations
 des fichiers edt.csv et etu.csv */
 
-public class LectureFichiers {
+public abstract class LectureFichiers {
 
     //Methode pour lire le fichier etu.csv
     public static String lireFichierEtu(){

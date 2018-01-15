@@ -18,7 +18,7 @@ public class Main {
        Cours GenieLogiciel = new Cours ("GenieLogiciel");
        Cours LV2Espagnol = new Cours ("LV2Espagnol");
        int i = Graphes.indice();
-       System.out.println("Java");
+       /*System.out.println("Java");
        System.out.println(Java.nombreTD());
        System.out.println("Communication");
        System.out.println(Communication.nombreTD());
@@ -28,10 +28,16 @@ public class Main {
        System.out.println(LV2Espagnol.nombreTD());
 
        System.out.println("Les cours qui ont les memes creneaux sont:");
-       System.out.println(LectureFichiers.coursEnMemeTemps());
+       System.out.println(LectureFichiers.coursEnMemeTemps());*/
 
-       System.out.println("TD de Java");
+       System.out.println("TD de Communication");
        System.out.println(Java.TD());
+
+       System.out.println("AffecteTD:");
+       System.out.println(Java.affecteTD(39));
+       System.out.println("Participe:");
+       System.out.println(Java.participe());
+       System.out.println((Java.participe()).size());
 
 
 

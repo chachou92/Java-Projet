@@ -49,7 +49,6 @@ public class Cours {
         ArrayList<ArrayList<String>> ie = LectureFichiers.infoEtudiant();
         for (int i = 1; i < (ie.size()); i++) {
             ArrayList<String> p = ie.get(i);
-            System.out.println(p);
             if (p.get(indice()).equals("1")) {
                 participe.add(p.get(0));
             }
@@ -106,5 +105,33 @@ public class Cours {
         }
         return TD;
     }
+
+    //Méthode qui affecte "grossierement" (sans tenir compte des conflits de creneau) les etudiants a un TD pour la matiere
+    public  ArrayList<ArrayList<String>> affecteTD(int max){
+        ArrayList<ArrayList<String>> affectationTD = new ArrayList<ArrayList<String>>();
+        int debut = 0;
+        int x;
+        if (participe().size()%nombreTD() == 0){
+            x = (participe().size())/nombreTD();
+        }
+        else{
+            x = (participe().size())/nombreTD() + 1 ;
+        }
+        if (x <= max){
+            for (int i=0;i< nombreTD()-1;i++){
+                ArrayList<String> al = new ArrayList<String>(participe().subList(debut,(debut+x)));
+                debut = debut + x;
+                affectationTD.add(al);
+            }
+            ArrayList<String> al = new ArrayList<String>(participe().subList(debut, participe().size()));
+            affectationTD.add(al);
+        }
+        else{
+            System.out.println("La taille maximale des TDs est trop basse pour le cours " + nomCours + ". Merci de l'augmenter avec l'option 4 du menu, a partir de " + x +".");
+            return null;
+        }
+        return affectationTD;
+    }
+
 
 }
