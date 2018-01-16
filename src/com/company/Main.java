@@ -46,6 +46,7 @@ public class Main {
 
        Etudiant Axel = new Etudiant ("92");
        System.out.println(Axel.coursInscrit(40));
+       System.out.println(Axel.coursProbleme(40));
 
 
 

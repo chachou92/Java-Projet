@@ -56,7 +56,33 @@ public class Etudiant {
 
     //On gere les problemes d'affectation associes a l'etudiant
     //Methode pour savoir si un etudiant pose probleme
-    public ArrayList<ArrayList> coursProbleme (int max){
+    public ArrayList<ArrayList<Cours>> coursProbleme (int max){
+        ArrayList<ArrayList<Cours>> coursProbleme = new ArrayList<ArrayList<Cours>>();
+        ArrayList<Cours> coursInscrit = coursInscrit(max);
+        ArrayList<Cours> aux = new ArrayList<Cours>();
+        for (int i = 0; i < coursInscrit.size(); i++){
+            ArrayList<Cours> coursEnConflit = coursInscrit.get(i).coursEnConflit();
+            if (coursEnConflit.size() != 0){
+
+                for (int j = i+1; j < coursInscrit.size(); j++){
+                    for (int k = 0; k < coursEnConflit.size(); k++){
+                        if(coursEnConflit.get(k).getNomCours().equals(coursInscrit.get(j).getNomCours())){
+                            Cours e = new Cours(coursInscrit.get(i).getNomCours());
+                            aux.add(e);
+                            Cours f = new Cours(coursEnConflit.get(k).getNomCours());
+                            aux.add(f);
+                        }
+
+                    }
+
+
+                }
+                coursProbleme.add(aux);
+
+            }
+
+        }
+        return coursProbleme;
 
     }
 
