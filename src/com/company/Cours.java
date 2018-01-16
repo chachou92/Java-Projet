@@ -133,5 +133,32 @@ public class Cours {
         return affectationTD;
     }
 
+    //Methode qui nous retourne la liste des Cours qui ont lieu en même temps que notre Cours donne
+    public ArrayList<Cours> coursEnConflit (){
+        ArrayList<Cours> coursEnConflit = new ArrayList<Cours>();
+        ArrayList<ArrayList<Cours>> aux = new ArrayList<ArrayList<Cours>>();
+        ArrayList<ArrayList<Cours>> coursEnMemeTemps = LectureFichiers.coursEnMemeTemps();
+        for (int i = 0; i < coursEnMemeTemps.size(); i++){
+           for (int j = 0; j < coursEnMemeTemps.get(i).size(); j++){
+               if (this.getNomCours().equals(coursEnMemeTemps.get(i).get(j).getNomCours())){
+                   aux.add(coursEnMemeTemps.get(i));
+               }
+           }
+        }
+        for (int i = 0; i < aux.size(); i++){
+            for (int j = 0; j < aux.get(i).size(); j++){
+                if(aux.get(i).get(j).getNomCours().equals(this.getNomCours())){
+                    aux.get(i).remove(aux.get(i).get(j));
+                }
+            }
+        }
+        for (int i = 0; i < aux.size(); i++){
+            for (int j = 0; j < aux.get(i).size(); j++){
+                coursEnConflit.add(aux.get(i).get(j));
+            }
+        }
+        return coursEnConflit;
+    }
+
 
 }
