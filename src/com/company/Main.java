@@ -10,7 +10,7 @@ public class Main {
 
         //Options du menu
         System.out.println("Que voulez-vous faire?");
-        //push
+        //test2
 
       /* //test
        Cours Graphes = new Cours ("Graphes");
