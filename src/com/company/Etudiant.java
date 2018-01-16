@@ -54,7 +54,10 @@ public class Etudiant {
         return coursInscrit;
     }
 
-    /*public ArrayList<Cours> problemePlacement (){
+    //On gere les problemes d'affectation associes a l'etudiant
+    //Methode pour savoir si un etudiant pose probleme
+    public ArrayList<ArrayList> coursProbleme (int max){
 
-    }*/
+    }
+
 }
