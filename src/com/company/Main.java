@@ -38,11 +38,14 @@ public class Main {
        System.out.println(Java.affecteTD(39));
        System.out.println("Participe:");
        System.out.println(Java.participe());
-       System.out.println((Java.participe()).size());*/
+       System.out.println((Java.participe()).size());
        Cours LV2Espagnol_1 = new Cours ("LV2Espagnol_1");
        System.out.println("courEnConflit de LV2Espagnol_1");
        System.out.println(LV2Espagnol_1.coursEnConflit());
-       System.out.println(LectureFichiers.coursEnMemeTemps());
+       System.out.println(LectureFichiers.coursEnMemeTemps());*/
+
+       Etudiant Axel = new Etudiant ("92");
+       System.out.println(Axel.coursInscrit(40));
 
 
 
