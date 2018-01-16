@@ -45,7 +45,9 @@ public class Main {
        System.out.println(LectureFichiers.coursEnMemeTemps());*/
 
        Etudiant Axel = new Etudiant ("92");
+       System.out.println("Cours inscrit:");
        System.out.println(Axel.coursInscrit(40));
+       System.out.println("Cours probleme:");
        System.out.println(Axel.coursProbleme(40));
 
 
