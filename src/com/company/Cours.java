@@ -59,12 +59,13 @@ public class Cours {
 
 
     //Méthode pour savoir si c'est un cours un TD
-    public void infoCoursOuTD (){
+    public int infoCoursOuTD (){
         int coursOuTD;
         if (nomCours.contains("_"))
             coursOuTD = 1;
         else
             coursOuTD = 0;
+        return coursOuTD;
     }
 
     //Méthode pour compter nombreTD
@@ -160,5 +161,22 @@ public class Cours {
         return coursEnConflit;
     }
 
+    //Methode qui nous retourne le CM d'un TD
+    public Cours CM (){
+        if (infoCoursOuTD() == 0){
+            return this;
+        }
+        else{
+            String nom = "";
+            int i = 0;
+            while (getNomCours().charAt(i)!= '_'){
+                nom = nom + getNomCours().charAt(i);
+                i = i+1;
+            }
+
+            Cours CM = new Cours(nom);
+            return CM;
+        }
+    }
 
 }

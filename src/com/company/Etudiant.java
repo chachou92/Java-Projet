@@ -59,7 +59,6 @@ public class Etudiant {
     public ArrayList<ArrayList<Cours>> coursProbleme (int max){
         ArrayList<ArrayList<Cours>> coursProbleme = new ArrayList<ArrayList<Cours>>();
         ArrayList<Cours> coursInscrit = coursInscrit(max);
-        //ArrayList<Cours> aux = new ArrayList<Cours>();
         for (int i = 0; i < coursInscrit.size(); i++){
             ArrayList<Cours> coursEnConflit = coursInscrit.get(i).coursEnConflit();
             if (coursEnConflit.size() != 0){
@@ -79,6 +78,16 @@ public class Etudiant {
         }
         return coursProbleme;
 
+    }
+
+    //Methode booleene qui nous verifie si l'etudiant a des cours en conflit
+    public boolean verifCoursEnConflit (int max){
+        if (coursProbleme(max).size() !=0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
