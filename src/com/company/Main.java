@@ -52,28 +52,36 @@ public class Main {
        System.out.println(Axel.coursProbleme(40));*/
 
        System.out.println("Etudiants");
-       System.out.println(Affectation.listeEutudiants());
-       System.out.println(Axel.verifCoursEnConflit(40));
+       //System.out.println(Affectation.listeEutudiants());
+       //System.out.println(Axel.verifCoursEnConflit(40));
        System.out.println("Etudiants a problemes");
        //System.out.println(Affectation.listeEtudiantsAProbleme(39));
        //System.out.println("Etudiants sans problemes");
        //System.out.println(Affectation.listeEtudiantsSansProbleme(39));
-        System.out.println(Graphes.CM());
+        //System.out.println(Graphes.CM());
 
         Etudiant Elie = new Etudiant ("92");
-        System.out.println(Elie.coursProbleme(40));
+       // System.out.println(Elie.coursProbleme(40));
 
         Etudiant Elo = new Etudiant ("4");
-        System.out.print(Elo.coursProbleme(40));
-        System.out.println(Elo.coursInscrit(40));
+       // System.out.print(Elo.coursProbleme(40));
+        //System.out.println(Elo.coursInscrit(40));
         ArrayList<Cours> c = new ArrayList<Cours>();
         Cours J = new Cours("Java_2");
         Cours IA = new Cours ("IA_3");
         c.add(J);
         c.add(IA);
 
+        ArrayList<Cours> d = new ArrayList<Cours>();
+        d.add(J);
+        d.add(IA);
 
-        System.out.println(Affectation.peuventChanger(Elie,Elo,c,40));
+        Cours Be = new Cours("Java_2");
+        //System.out.println(Be.equals(J));
+        /*System.out.println(c);
+        System.out.println(d);
+        System.out.println(c == d);*/
+        System.out.println(Affectation.peuventChanger(Elo,Elie,c,40));
 
 
 

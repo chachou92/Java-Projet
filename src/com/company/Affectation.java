@@ -6,6 +6,8 @@ en tenant compte des contraintes de cours sur le même creneau.*/
 
 import java.util.ArrayList;
 
+import static java.lang.Math.min;
+
 public abstract class Affectation {
 
     //Methode pour instancier tous les objets Etudiants a partir du fichier etu
@@ -49,26 +51,62 @@ public abstract class Affectation {
         al1.add(e2);
     }
 
+    public static boolean listesEgales (ArrayList<Cours> c1, ArrayList<Cours> c2){
+        int min = min(c1.size(),c2.size());
+        boolean verif = true;
+        for (int i = 0; i < min; i++){
+            if (!(c1.get(i).equals(c2.get(i)))){
+                verif = false;
+            }
+        }
+        return verif;
+    }
+
     //Methode pour savoir si deux etudiants peuvent changer ou pas
     public static boolean peuventChanger (Etudiant e1, Etudiant e2, ArrayList<Cours> c, int max){
         boolean test1 = false;
+        //boolean test1 = true;
         for (int i = 0; i< e1.coursProbleme(max).size(); i++){
-            if(c == e1.coursProbleme(max).get(i)) {
+            if(listesEgales(c, e1.coursProbleme(max).get(i))) {
                 test1 = true;
             }
+           /* int k = 0;
+            while(k < c.size() && test1 == true){
+                if (!(c.get(k).getNomCours().equals(e1.coursProbleme(max).get(i).get(k).getNomCours()))){
+                    test1 = false;
+                }
+                k = k+1;
+            }*/
         }
         boolean test2 = false;
+        //boolean test2 = true;
         for (int i = 0; i< e2.coursProbleme(max).size(); i++){
-            if(c == e2.coursProbleme(max).get(i)) {
+            if(listesEgales(c,e2.coursProbleme(max).get(i))) {
                 test2 = true;
             }
+            /*int k = 0;
+            while(k < c.size() && test2 == true){
+                if (!(c.get(k).getNomCours().equals(e2.coursProbleme(max).get(i).get(k).getNomCours()))){
+                    test2 = false;
+                }
+                k = k+1;
+            }*/
         }
         boolean test3 = false;
+        //boolean test3 = true;
         for (int i = 0; i< e2.coursInscrit(max).size(); i++){
             for (int k = 1; k<c.size();k++) {
-                if (c.get(k) == e2.coursInscrit(max).get(i).CM()){
+                if (c.get(k).equals(e2.coursInscrit(max).get(i).CM())){
                     test3 = true;
                 }
+                /*int l = 0;
+                while(l < c.size() && test3 == true){
+                    if (!(c.get(l).getNomCours().equals(e2.coursInscrit(max).get(i).CM().getNomCours()))){
+                        test3 = false;
+                    }
+                    l = l+1;
+                }*/
+
             }
         }
         if(test1==true && test2 == false && test3==true){

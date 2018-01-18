@@ -179,4 +179,13 @@ public class Cours {
         }
     }
 
+    public boolean equals (Cours c){
+        if (c.getNomCours().equals(getNomCours())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }
