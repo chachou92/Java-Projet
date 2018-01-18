@@ -90,4 +90,15 @@ public class Etudiant {
         }
     }
 
+    //Methode pour savoir a quel TD participe l'etudiant pour une matiere donnee
+    public Cours numeroTDMatiere (Cours c){
+        ArrayList<Cours> TD = c.TD();
+        for (int i = 0; i < TD.size(); i++){
+            if (TD.get(i).participe().contains(getId())){
+                return TD.get(i);
+            }
+        }
+        return null;
+    }
+
 }

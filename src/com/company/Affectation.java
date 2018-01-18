@@ -44,11 +44,11 @@ public abstract class Affectation {
     }
 
     //Methode qui echange deux etudiants de leurs TDs respectifs
-    public static void echangeEtudiants(Etudiant e1, Etudiant e2, ArrayList<Etudiant> al1, ArrayList<Etudiant> al2) {
-        al1.remove(e1);
-        al2.add(e1);
-        al2.remove(e2);
-        al1.add(e2);
+    public static void echangeEtudiants(Etudiant e1, Etudiant e2, ArrayList<String> al1, ArrayList<String> al2) {
+        al1.remove(e1.getId());
+        al2.add(e1.getId());
+        al2.remove(e2.getId());
+        al1.add(e2.getId());
     }
 
     public static boolean listesEgales(ArrayList<Cours> c1, ArrayList<Cours> c2) {
@@ -98,17 +98,33 @@ public abstract class Affectation {
         }
     }
 
-    /*//Methode qui regle les problemes de tous les etudiants (en principe)
-    public void affectationFinale(int max){
+    //Affectation
+    //Methode qui regle les problemes de tous les etudiants (en principe)
+    public static void affectationFinale(int max){
         //On itere l'algorithme tant qu'il reste des etudiants a probleme
         while (listeEtudiantsAProbleme(max).size() != 0){
+            //On prend le premier etudiant de la liste d'etudiants a probleme
             Etudiant et = new Etudiant(listeEtudiantsAProbleme(max).get(0).getId());
-            for(int i = 0; i < et.coursProbleme(max).size();i++){
-                Etudiant ch = new Etudiant(listeEtudiantsSansProbleme(max).get(0).getId());
-
+            //On regarde tous ses creneaux qui posent probleme
+            for(int i = 0; i < et.coursProbleme(max).size();i++) {
+                //On cherche dans la liste un etudiant pour qui ce creneau n'est pas un probleme
+                for (int k = 0; k < listeEtudiantsSansProbleme(max).size(); k++) {
+                    //On prend un etudiant de cette liste
+                    Etudiant ch = new Etudiant(listeEtudiantsSansProbleme(max).get(k).getId());
+                    Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
+                    //On regarde si les deux peuvent changer
+                    if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
+                        echangeEtudiants(et,ch, probleme.participe(), ch.numeroTDMatiere(probleme.CM()).participe());
+                        //On met a jour la liste d'etudiant a probleme et sans probleme
+                        listeEtudiantsAProbleme(max).remove(et);
+                        System.out.println(listeEtudiantsAProbleme(max));
+                        listeEtudiantsSansProbleme(max).add(et);
+                        break;
+                    //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
+                    }
+                }
             }
-
         }
-    }*/
+    }
 
 }
