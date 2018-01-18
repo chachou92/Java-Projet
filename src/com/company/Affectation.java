@@ -62,6 +62,7 @@ public abstract class Affectation {
         return verif;
     }
 
+
     //Methode pour savoir si deux etudiants peuvent changer ou pas
     public static boolean peuventChanger (Etudiant e1, Etudiant e2, ArrayList<Cours> c, int max){
         boolean test1 = false;

@@ -188,4 +188,16 @@ public class Cours {
         }
     }
 
+    public boolean contenuDansListe (ArrayList<Cours> c){
+        int i = 0;
+        boolean verif = false;
+        while (i < c.size() && verif == false){
+            if(this.equals(c.get(i))){
+                verif = true;
+            }
+            i = i+1;
+        }
+        return verif;
+    }
+
 }

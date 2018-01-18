@@ -76,12 +76,13 @@ public class Main {
         d.add(J);
         d.add(IA);
 
+        System.out.println(J.contenuDansListe(c));
         Cours Be = new Cours("Java_2");
         //System.out.println(Be.equals(J));
         /*System.out.println(c);
         System.out.println(d);
         System.out.println(c == d);*/
-        System.out.println(Affectation.peuventChanger(Elo,Elie,c,40));
+        //System.out.println(Affectation.peuventChanger(Elo,Elie,c,40));
 
 
 
