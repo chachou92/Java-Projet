@@ -59,9 +59,9 @@ public class Main {
                   case (3) :
 
                       //Normalement, on lance l'affectattion et on affiche dans le fichier de sortie.
-                      //Affectation.affectationFinale(40);
+                      Affectation.affectationFinale(40);
                       //FichierSortie.fichierSortie(40);
-                      System.out.println(FichierSortie.fichierFinal(40));
+                      //System.out.println(FichierSortie.fichierFinal(40));
 
                      break;
 

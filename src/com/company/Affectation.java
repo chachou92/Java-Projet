@@ -100,26 +100,33 @@ public abstract class Affectation {
     //Methode qui regle les problemes de tous les etudiants (en principe) --> probleme.
     public static void affectationFinale(int max){
         //On itere l'algorithme tant qu'il reste des etudiants a probleme
-        while (listeEtudiantsAProbleme(max).size() != 0){
+        ArrayList<Etudiant> al = new ArrayList<Etudiant>();
+        al.addAll(listeEtudiantsAProbleme(max));
+        System.out.println("Fait 1");
+        ArrayList<Etudiant> al2 = new ArrayList<Etudiant>();
+        al2.addAll(listeEtudiantsSansProbleme(max));
+        System.out.println("Fait 2");
+        while (al.size() != 0){
             //On prend le premier etudiant de la liste d'etudiants a probleme
-            Etudiant et = new Etudiant(listeEtudiantsAProbleme(max).get(0).getId());
+            Etudiant et = new Etudiant(al.get(0).getId());
             //On regarde tous ses creneaux qui posent probleme
             for(int i = 0; i < et.coursProbleme(max).size();i++) {
                 //On cherche dans la liste un etudiant pour qui ce creneau n'est pas un probleme
-                for (int k = 0; k < listeEtudiantsSansProbleme(max).size(); k++) {
+                System.out.println("i: "+i);
+                for (int k = 0; k < al2.size(); k++) {
                     //On prend un etudiant de cette liste
-                    Etudiant ch = new Etudiant(listeEtudiantsSansProbleme(max).get(k).getId());
+                    Etudiant ch = new Etudiant(al2.get(k).getId());
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
+                    System.out.println("k: "+k);
                     //On regarde si les deux peuvent changer
                     if (!peuventChanger(et,ch,et.coursProbleme(max).get(i), max)) {
-                        continue;
+                        echangeEtudiants(et, ch, probleme.participe(), ch.numeroTDMatiere(probleme.CM()).participe());
+                        //On met a jour la liste d'etudiant a probleme et sans probleme
+                        al.remove(et);
+                        System.out.println(al);
+                        al2.add(et);
+                        break;
                     }
-                    echangeEtudiants(et,ch, probleme.participe(), ch.numeroTDMatiere(probleme.CM()).participe());
-                    //On met a jour la liste d'etudiant a probleme et sans probleme
-                    listeEtudiantsAProbleme(max).remove(et);
-                    System.out.println(listeEtudiantsAProbleme(max));
-                    listeEtudiantsSansProbleme(max).add(et);
-                    break;
                     //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
                 }
             }
