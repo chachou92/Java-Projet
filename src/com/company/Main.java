@@ -9,8 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Menu
-
         //Options du menu
         System.out.println("Que voulez-vous faire?");
 
@@ -62,7 +60,7 @@ public class Main {
                     case (3) :
 
                         //Normalement, on lance l'affectattion et on affiche dans le fichier de sortie.
-                        //Affectation.affectationFinale(max);
+                        Affectation.affectationFinale(max);
 
                         //On cree le fichier de sortie avec l'affectation
                         //FichierSortie.fichierSortie(max);

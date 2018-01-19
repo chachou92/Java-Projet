@@ -15,7 +15,12 @@ import java.util.Arrays;
 
 public abstract class FichierSortie {
 
-    //On prend la liste de tous les cours
+
+    /**
+     * Retourne la liste de tous les cours.
+     * @param max
+     * @return
+     */
     public static ArrayList<ArrayList<String>> fichierFinal(int max) {
         ArrayList<Cours> listeCours = new ArrayList<Cours>();
         ArrayList<ArrayList<String>> al = new ArrayList<ArrayList<String>>();
@@ -54,7 +59,11 @@ public abstract class FichierSortie {
     }
 
 
-    //On ecrit dans un fichier sortie.csv
+    /**
+     * Ecrit dans le fichier sortie.csv qui sera le fichier de sortie du programme.
+     * @param max
+     * @return
+     */
     public static File fichierSortie(int max) {
         String resultat = "";
         //On met un point virgule entre chaque element de la sous liste et un retour a la ligne a la fin

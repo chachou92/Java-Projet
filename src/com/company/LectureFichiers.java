@@ -9,6 +9,11 @@ des fichiers edt.csv et etu.csv */
 public abstract class LectureFichiers {
 
     //Methode pour lire le fichier etu.csv
+
+    /**
+     * Permet de lire le fichier etu.csv
+     * @return
+     */
     public static String lireFichierEtu(){
 
         try {
@@ -35,7 +40,11 @@ public abstract class LectureFichiers {
         }
     }
 
-    //Méthode pour avoir chaque information sur chaque etudiant : retourne une Arraylist d'Arraylist
+
+    /**
+     *Retourne chaque information sur chaque etudiant.
+     * @return
+     */
     public static ArrayList<ArrayList<String>> infoEtudiant() {
 
         ArrayList<ArrayList<String>> infoEtu = new ArrayList<ArrayList<String>>();
@@ -58,7 +67,10 @@ public abstract class LectureFichiers {
         return infoEtu;
     }
 
-    //Methode pour lire le fichier edt.csv
+    /**
+     * Lit le fichier edt.csv.
+     * @return
+     */
     public static String lireFichierEdt(){
         try {
             //Ouverture et lecture du fichier emploi du temps
@@ -83,6 +95,11 @@ public abstract class LectureFichiers {
 
 
     //Méthode pour avoir les infos sur l'emploi du temps
+
+    /**
+     * Retourne les informations sur l'emploi du temps.
+     * @return
+     */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps() {
 
         ArrayList<ArrayList<String>> infoEdt = new ArrayList<ArrayList<String>>();
@@ -105,7 +122,11 @@ public abstract class LectureFichiers {
         return infoEdt;
     }
 
-    //Méthode pour savoir quels cours se passent en même temps
+
+    /**
+     * Retourne la liste des cours qui se passent en meme temps.
+     * @return
+     */
     public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
         ArrayList<ArrayList<Cours>> coursEnMemeTemps = new ArrayList<ArrayList<Cours>>();
@@ -129,6 +150,12 @@ public abstract class LectureFichiers {
     //Lecture de fichiers qu'on tape à la main:
 
     //Methode pour lire le fichier détudiant tapé à la main
+
+    /**
+     * Lit les fichiers tapes a la main.
+     * @param nom
+     * @return
+     */
     public static String lireFichierEtu(String nom){
 
         try {
@@ -156,6 +183,12 @@ public abstract class LectureFichiers {
     }
 
     //Méthode pour avoir chaque information sur chaque etudiant : retourne une Arraylist d'Arraylist
+
+    /**
+     * Retourne chaque information sur chaque etudiant du fichier tape a la main.
+     * @param nom
+     * @return
+     */
     public static ArrayList<ArrayList<String>> infoEtudiant(String nom) {
 
         ArrayList<ArrayList<String>> infoEtu = new ArrayList<ArrayList<String>>();
@@ -179,6 +212,12 @@ public abstract class LectureFichiers {
     }
 
     //Methode pour lire le fichier edt.csv
+
+    /**
+     * Lit le fichier emploi du temps tape a la main.
+     * @param nom
+     * @return
+     */
     public static String lireFichierEdt(String nom){
         try {
             //Ouverture et lecture du fichier emploi du temps
@@ -203,6 +242,12 @@ public abstract class LectureFichiers {
 
 
     //Méthode pour avoir les infos sur l'emploi du temps
+
+    /**
+     * Retourne les informations sur l'emploi du temps tape a la main.
+     * @param nom
+     * @return
+     */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps(String nom) {
 
         ArrayList<ArrayList<String>> infoEdt = new ArrayList<ArrayList<String>>();
@@ -226,6 +271,12 @@ public abstract class LectureFichiers {
     }
 
     //Méthode pour savoir quels cours se passent en même temps
+
+    /**
+     * Retourne la liste des cours qui se passent en meme temps depuis le fichier tape a la main.
+     * @param nom
+     * @return
+     */
     public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (String nom){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps(nom);
         ArrayList<ArrayList<Cours>> coursEnMemeTemps = new ArrayList<ArrayList<Cours>>();
