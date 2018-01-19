@@ -2,14 +2,18 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
-/* On créé une classe Etudiant qui a comme attribut un Id, et qui donne des informations sur l'emploi du temps
-et les conflits de chaque etudiant.
+/* On créé une classe Etudiant qui:
+
 */
 
 public class Etudiant {
 
     private String id;
 
+    /**
+     * Construit un etudiant a partir d'un identifiant.
+     * @param identifiant
+     */
     public Etudiant (String identifiant){
         id = identifiant;
     }
@@ -17,16 +21,27 @@ public class Etudiant {
         id ="";
     }
 
+    /**
+     * Retourne l'identifiant d'un etudiant.
+     * @return id
+     */
     public String getId () {return id;}
 
+    /**
+     * Affiche l'etudiant.
+     * @return id
+     */
     @Override
     public String toString (){
         return id;
     }
 
-    //Methode qui donne les cours et les TD auquel est inscrit a priori un etudiant
+    /**
+     * Affiche la liste des cours dans lesquels l'etudiant est inscrit.
+     * @param max
+     * @return coursInscrit
+     */
     public ArrayList<Cours> coursInscrit (int max){
-        //On instancie nos objets Cours a partir du fichier etu.
         ArrayList<Cours> coursInscrit = new ArrayList<Cours>();
         ArrayList<Cours> listeCours = new ArrayList<Cours>();
         ArrayList<String> participe = new ArrayList<String>();
@@ -36,13 +51,11 @@ public class Etudiant {
             Cours c = new Cours(participe.get(i));
             listeCours.add(c);
         }
-        //On regarde si l'etudiant est inscrit au cours.
         for (int i = 0; i < listeCours.size(); i++){
             if (listeCours.get(i).participe().contains(id)){
                 coursInscrit.add(listeCours.get((i)));
             }
         }
-        //On regarde si l'etuduant est affecte au TD.
         for (int i = 0; i < listeCours.size(); i++){
             if (listeCours.get(i).TD().size() !=0){
                 ArrayList<ArrayList<String>> affect = listeCours.get(i).affecteTD(max);
@@ -59,10 +72,11 @@ public class Etudiant {
     }
 
 
-
-
-    //On gere les problemes d'affectation associes a l'etudiant
-    //Methode pour savoir si un etudiant pose probleme
+    /**
+     * Retourne la liste des cours que l'etudiant suit et qui posent probleme.
+     * @param max
+     * @return coursProbleme
+     */
     public ArrayList<ArrayList<Cours>> coursProbleme (int max){
         ArrayList<ArrayList<Cours>> coursProbleme = new ArrayList<ArrayList<Cours>>();
         ArrayList<Cours> coursInscrit = coursInscrit(max);
@@ -82,16 +96,6 @@ public class Etudiant {
                         coursProbleme.add(aux);
                     }
 
-                   /* for (int k = 0; k < coursEnConflit.size(); k++){
-                        if(coursEnConflit.get(k).getNomCours().equals(coursInscrit.get(j).getNomCours())){
-                            ArrayList<Cours> aux = new ArrayList<Cours>();
-                            Cours e = new Cours(coursInscrit.get(i).getNomCours());
-                            aux.add(e);
-                            Cours f = new Cours(coursEnConflit.get(k).getNomCours());
-                            aux.add(f);
-                            coursProbleme.add(aux);
-                        }
-                    }*/
                 }
             }
         }
@@ -99,7 +103,11 @@ public class Etudiant {
 
     }
 
-    //Methode booleene qui nous verifie si l'etudiant a des cours en conflit
+    /**
+     * Indique si l'etudiant a des cours en conflit.
+     * @param max
+     * @return verifCoursEnConflit
+     */
     public boolean verifCoursEnConflit (int max){
         if (coursProbleme(max).size() !=0){
             return true;
@@ -109,8 +117,13 @@ public class Etudiant {
         }
     }
 
-    //Methode pour savoir a quel TD participe l'etudiant pour une matiere donnee
-    public Cours numeroTDMatiere (Cours c,int max){
+    /**
+     * Indique le TD dans lequel l'etudiant est inscrit.
+     * @param c
+     * @param max
+     * @return numeroTDMatiere
+     */
+    public Cours numeroTDMatiere (Cours c, int max){
         ArrayList<Cours> TD = c.TD();
         for (int i = 0; i < TD.size(); i++){
             if (TD.get(i).listeInscrits(max).contains(getId())){

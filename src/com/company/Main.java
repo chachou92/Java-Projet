@@ -9,8 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Menu
-
         //Options du menu
         System.out.println("Que voulez-vous faire?");
 

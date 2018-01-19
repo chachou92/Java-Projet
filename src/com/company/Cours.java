@@ -4,21 +4,36 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Cours {
     private String nomCours;
     //private int coursOuTD; //Si égal à 1 alors TD sinon, cours
 
     //Constructeurs
 
+    /**
+     *Construit un cours a partir d'un nom.
+     * @param nomCours
+     */
     public Cours(String nomCours) {
         this.nomCours = nomCours;
     }
 
+    /**
+     * Consuirt un cours vide.
+     */
     public Cours() {
         nomCours = "";
     }
 
     //Méthodes get()
+
+    /**
+     * Retourne le nom du cours.
+     * @return nomCours
+     */
     public String getNomCours() {
         return nomCours;
     }
@@ -29,6 +44,11 @@ public class Cours {
 //D'abord on va chercher l'index du cours dans notre liste infoEtu
 
     //Methode indice()
+
+    /**
+     * Nous donne l'indice d'un cours dans la liste des cours.
+     * @return index
+     */
     public int indice() {
         int index;
         ArrayList<String> listeNomCours = new ArrayList<String>();
@@ -38,12 +58,24 @@ public class Cours {
     }
 
     //Methode toString pour afficher les Cours
+
+    /**
+     * Affiche le cours
+     * @return nomCours
+     */
     @Override
     public String toString() {
         return nomCours;
     }
 
+
     //Méthode participe()
+
+    /**
+     * Nous donne la liste des etudiants qui participe au cours.
+     *
+     * @return participe
+     */
     public ArrayList<String> participe() {
         ArrayList<String> participe = new ArrayList<String>();
         ArrayList<ArrayList<String>> ie = LectureFichiers.infoEtudiant();
@@ -58,6 +90,11 @@ public class Cours {
 
 
     //Méthode pour savoir si c'est un cours un TD
+
+    /**
+     * Nous dit si c'est un cours ou un TD.
+     * @return coursOuTD
+     */
     public int infoCoursOuTD (){
         int coursOuTD;
         if (nomCours.contains("_"))
@@ -67,6 +104,11 @@ public class Cours {
         return coursOuTD;
     }
 
+    /**
+     * Nous donne l'indice d'un cours dans une liste donnée.
+     * @param c
+     * @return indice
+     */
     public int indiceDansListe (ArrayList<Cours> c){
         for (int i = 0; i < c.size(); i++){
             if (this.equals(c.get(i))){
@@ -77,6 +119,12 @@ public class Cours {
     }
 
     //Methode pour avoir la liste des etudiants inscrits que ce soit dans des TDs ou des CMs
+
+    /**
+     *Nous donne la liste des etudiants inscrit au cours.
+     * @param max
+     * @return listeInscrits
+     */
     public ArrayList<String> listeInscrits (int max){
         if (infoCoursOuTD() == 0){
             return participe();
@@ -94,6 +142,10 @@ public class Cours {
 
     }
 
+    /**
+     * Nous retourne le nombre de TD qu'une matiere a.
+     * @return nombreTD
+     */
     //Méthode pour compter nombreTD
     public int nombreTD (){
         ArrayList<ArrayList<String>> infoEdt = LectureFichiers.infoEmploisDuTemps();
@@ -123,6 +175,10 @@ public class Cours {
         return s;
     }
 
+    /**
+     * Nous retourne la liste des TD qu'un cours a.
+     * @return TD
+     */
     //Methode qui cree une liste de Cours qui correspond aux differents TDs
     public ArrayList<Cours> TD (){
         ArrayList<Cours> TD =  new ArrayList<Cours>();
@@ -133,6 +189,11 @@ public class Cours {
         return TD;
     }
 
+    /**
+     * Affecte les etudiants aux TDs sans tenir compte des conflits.
+     * @param max
+     * @return affecteTD
+     */
     //Méthode qui affecte "grossierement" (sans tenir compte des conflits de creneau) les etudiants a un TD pour la matiere
     public  ArrayList<ArrayList<String>> affecteTD(int max){
         ArrayList<ArrayList<String>> affectationTD = new ArrayList<ArrayList<String>>();
@@ -160,6 +221,10 @@ public class Cours {
         return affectationTD;
     }
 
+    /**
+     * Nous retourne la liste des cours qui ont lieu en meme temps que notre cours.
+     * @return coursEnConflit
+     */
     //Methode qui nous retourne la liste des Cours qui ont lieu en même temps que notre Cours donne
     public ArrayList<Cours> coursEnConflit (){
         ArrayList<Cours> coursEnConflit = new ArrayList<Cours>();
@@ -187,6 +252,10 @@ public class Cours {
         return coursEnConflit;
     }
 
+    /**
+     * Nous retourne le CM d'un TD.
+     * @return CM
+     */
     //Methode qui nous retourne le CM d'un TD
     public Cours CM (){
         if (infoCoursOuTD() == 0){
@@ -205,6 +274,11 @@ public class Cours {
         }
     }
 
+    /**
+     * Nous dit si notre cours est egal a un cours donné.
+     * @param c
+     * @return equals
+     */
     public boolean equals (Cours c){
         if (c.getNomCours().equals(getNomCours())){
             return true;
@@ -214,6 +288,11 @@ public class Cours {
         }
     }
 
+    /**
+     * Nous dit si le cours st contenu dans la liste donnee.
+     * @param c
+     * @return contains
+     */
     public boolean contenuDansListe (ArrayList<Cours> c){
         int i = 0;
         boolean verif = false;
