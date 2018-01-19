@@ -114,7 +114,7 @@ public abstract class Affectation {
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
                     //On regarde si les deux peuvent changer
                     if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
-                        echangeEtudiants(et,ch, probleme.participe(), ch.numeroTDMatiere(probleme.CM()).participe());
+                        echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM()).listeInscrits(max));
                         //On met a jour la liste d'etudiant a probleme et sans probleme
                         listeEtudiantsAProbleme(max).remove(et);
                         System.out.println(listeEtudiantsAProbleme(max));
