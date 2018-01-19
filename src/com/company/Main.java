@@ -4,6 +4,10 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classe qui gère le menu du programme.
+ */
+
 public class Main {
     static int max = 50;
 

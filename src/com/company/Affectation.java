@@ -139,13 +139,10 @@ public abstract class Affectation {
     public static void affectationFinale(int max){
         //On itere l'algorithme tant qu'il reste des etudiants a probleme
         ArrayList<Etudiant> al1 = listeEtudiantsAProbleme(max);
-        System.out.println("Fait 1");
         ArrayList<Etudiant> al2 = listeEtudiantsSansProbleme(max);
-        System.out.println("Fait 2");
-        int chachou = 0;
+        System.out.println("Etape 1 - fait");
         int taille = al2.size();
         while (al1.size() != 0){
-            System.out.println("chachou: "+chachou);
             //On prend le premier etudiant de la liste d'etudiants a probleme
             Etudiant et = new Etudiant(al1.get(0).getId());
             //On regarde tous ses creneaux qui posent probleme
@@ -158,23 +155,16 @@ public abstract class Affectation {
                     Etudiant ch = new Etudiant(al2.get(k).getId());
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
                     //On regarde si les deux peuvent changer
-                    if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
-                        System.out.println("et: "+et);
-                        System.out.println("ch: "+ch);
-                        System.out.println("probleme machi: "+probleme.listeInscrits(max));
-                        System.out.println("ch.numero truc: "+ch.numeroTDMatiere(probleme.CM(),max).listeInscrits(max));//Le probleme est la
+                    if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max) && ch.estInscrit(probleme,max)){
                         echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM(),max).listeInscrits(max));
                         //On met a jour la liste d'etudiant a probleme et sans probleme
                         al1.remove(al1.get(0));
-                        System.out.println("al1: "+al1);
                         al2.add(et);
-                        System.out.println("al2: "+al2);
                         break;
                     //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
                     }
                 }
             }
-            chachou +=1;
         }
     }
 

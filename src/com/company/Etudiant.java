@@ -133,4 +133,22 @@ public class Etudiant {
         return null;
     }
 
+    /**
+     * Indique si un etudiant est inscrit a un cours donne
+     * @param c
+     * @param max
+     * @return Vrai si l'étudiant est inscrit au cours, faux sinon. 
+     */
+    public boolean estInscrit (Cours c, int max){
+        String identifiant = getId();
+        ArrayList<String> al = c.listeInscrits(max);
+        if (al.contains(identifiant)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
 }
