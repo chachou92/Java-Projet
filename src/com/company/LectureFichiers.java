@@ -3,8 +3,10 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
-/* On cree une classe LectureFichiers qui gere la lecture et la recuperation des informations
-des fichiers edt.csv et etu.csv */
+/**
+ *  Classe qui gere la lecture et la recuperation des informations
+des fichiers edt.csv et etu.csv.
+ */
 
 public abstract class LectureFichiers {
 
@@ -12,7 +14,7 @@ public abstract class LectureFichiers {
 
     /**
      * Permet de lire le fichier etu.csv
-     * @return fichier
+     * @return Le fichier sous forme de String.
      */
     public static String lireFichierEtu(){
 
@@ -43,7 +45,7 @@ public abstract class LectureFichiers {
 
     /**
      *Retourne chaque information sur chaque etudiant.
-     * @return infoEtudiant
+     * @return Le fichier sous forme d'arraylistes de String.
      */
     public static ArrayList<ArrayList<String>> infoEtudiant() {
 
@@ -69,7 +71,7 @@ public abstract class LectureFichiers {
 
     /**
      * Lit le fichier edt.csv.
-     * @return fichier
+     * @return Le fichier sous forme de String.
      */
     public static String lireFichierEdt(){
         try {
@@ -98,7 +100,7 @@ public abstract class LectureFichiers {
 
     /**
      * Retourne les informations sur l'emploi du temps.
-     * @return fichier
+     * @return Le fichier sous forme d'arraylistes de String.
      */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps() {
 
@@ -187,7 +189,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne chaque information sur chaque etudiant du fichier tape a la main.
      * @param nom
-     * @return infoEtu
+     * @return Le fichier sous forme d'arraylistes de String.
      */
     public static ArrayList<ArrayList<String>> infoEtudiant(String nom) {
 
@@ -246,7 +248,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne les informations sur l'emploi du temps tape a la main.
      * @param nom
-     * @return infoEdt
+     * @return Le fichier sous forme d'arraylistes de String.
      */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps(String nom) {
 
@@ -275,7 +277,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne la liste des cours qui se passent en meme temps depuis le fichier tape a la main.
      * @param nom
-     * @return coursEnMemeTemps
+     * @return Un arrayliste d'arrayliste des cours en meme temps
      */
     public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (String nom){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps(nom);

@@ -1,19 +1,20 @@
 package com.company;
 
 
-/*Dans cette classe on gere l'affectattion des etudiants aux groupes de TD
-en tenant compte des contraintes de cours sur le même creneau.*/
 
 import java.util.ArrayList;
-
 import static java.lang.Math.min;
 
+/**
+ * Classe qui gère l'affectattion des etudiants aux groupes de TD
+ en tenant compte des contraintes de cours sur le même creneau.
+ */
 public abstract class Affectation {
 
 
     /**
      * Instancie les objets Etudiants a partir du fichier etu.csv
-     * @return listeEtudiants
+     * @return Une arrayliste d'étudiants.
      */
     public static ArrayList<Etudiant> listeEutudiants() {
         ArrayList<Etudiant> listeEtu = new ArrayList<Etudiant>();
@@ -28,7 +29,7 @@ public abstract class Affectation {
     /**
      * Retourne la liste des etudiants qui ont des conflits.
      * @param max
-     * @return etusAProblemes
+     * @return Une arrayliste d'étudiants avec des cours en conflit.
      */
     public static ArrayList<Etudiant> listeEtudiantsAProbleme(int max) {
         ArrayList<Etudiant> etusAProblemes = new ArrayList<Etudiant>();
@@ -43,7 +44,7 @@ public abstract class Affectation {
     /**
      * Retourne la liste des etudiants qui n'ont pas de conflits.
      * @param max
-     * @return etuSansProblemes
+     * @return Une arrayliste d'étudiants sans cours en conflit.
      */
     public static ArrayList<Etudiant> listeEtudiantsSansProbleme(int max) {
         ArrayList<Etudiant> etusSansProblemes = new ArrayList<Etudiant>();
@@ -73,7 +74,7 @@ public abstract class Affectation {
      * Indique si deux listes d'etudiants sont egales ou pas.
      * @param c1
      * @param c2
-     * @return verif
+     * @return Vrai si deux listes sont égales, faux sinon.
      */
     public static boolean listesEgales(ArrayList<Cours> c1, ArrayList<Cours> c2) {
         int min = min(c1.size(), c2.size());
@@ -93,7 +94,7 @@ public abstract class Affectation {
      * @param e2
      * @param c
      * @param max
-     * @return boolean
+     * @return Vrai si deux étudiants peuvent changer de groupe de TD, faux sinon.
      */
     public static boolean peuventChanger(Etudiant e1, Etudiant e2, ArrayList<Cours> c, int max) {
         //Test si l'Arraylist de Cours pose probleme a l'etudiant 1

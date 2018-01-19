@@ -2,10 +2,10 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
-/* On créé une classe Etudiant qui:
 
-*/
-
+/**
+ * Classe qui donne les informations utiles des étudiants.
+ */
 public class Etudiant {
 
     private String id;
@@ -23,13 +23,13 @@ public class Etudiant {
 
     /**
      * Retourne l'identifiant d'un etudiant.
-     * @return id
+     * @return L'identifiant de l'étudiant.
      */
     public String getId () {return id;}
 
     /**
      * Affiche l'etudiant.
-     * @return id
+     * @return L'identifiant de l'etudiant sous forme de String.
      */
     @Override
     public String toString (){
@@ -39,7 +39,7 @@ public class Etudiant {
     /**
      * Affiche la liste des cours dans lesquels l'etudiant est inscrit.
      * @param max
-     * @return coursInscrit
+     * @return Une arrayliste "coursInscrit"
      */
     public ArrayList<Cours> coursInscrit (int max){
         ArrayList<Cours> coursInscrit = new ArrayList<Cours>();
@@ -75,7 +75,7 @@ public class Etudiant {
     /**
      * Retourne la liste des cours que l'etudiant suit et qui posent probleme.
      * @param max
-     * @return coursProbleme
+     * @return Une arrayliste "coursProbleme"
      */
     public ArrayList<ArrayList<Cours>> coursProbleme (int max){
         ArrayList<ArrayList<Cours>> coursProbleme = new ArrayList<ArrayList<Cours>>();
@@ -106,7 +106,7 @@ public class Etudiant {
     /**
      * Indique si l'etudiant a des cours en conflit.
      * @param max
-     * @return verifCoursEnConflit
+     * @return Vrai si l'étudiant a un cours en conflit et faux sinon.
      */
     public boolean verifCoursEnConflit (int max){
         if (coursProbleme(max).size() !=0){
@@ -121,7 +121,7 @@ public class Etudiant {
      * Indique le TD dans lequel l'etudiant est inscrit.
      * @param c
      * @param max
-     * @return numeroTDMatiere
+     * @return Le numero du TD de l'étuddiant pour le cours c.
      */
     public Cours numeroTDMatiere (Cours c, int max){
         ArrayList<Cours> TD = c.TD();

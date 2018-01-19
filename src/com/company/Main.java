@@ -61,10 +61,9 @@ public class Main {
 
                         //Normalement, on lance l'affectattion et on affiche dans le fichier de sortie.
                         Affectation.affectationFinale(max);
-
                         //On cree le fichier de sortie avec l'affectation
-                        //FichierSortie.fichierSortie(max);
-                        //System.out.println(FichierSortie.fichierFinal(max));
+                        FichierSortie.fichierSortie(max);
+                        System.out.println("Le fichier de sortie est prêt.");
 
                         break;
 

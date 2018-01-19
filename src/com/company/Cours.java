@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
+ *Classe qui donne les informations utiles de l'emploi du temps.
  */
 public class Cours {
     private String nomCours;
@@ -22,7 +22,7 @@ public class Cours {
     }
 
     /**
-     * Consuirt un cours vide.
+     * Construit un cours vide.
      */
     public Cours() {
         nomCours = "";
@@ -32,7 +32,7 @@ public class Cours {
 
     /**
      * Retourne le nom du cours.
-     * @return nomCours
+     * @return Le nom du cours sous forme de String.
      */
     public String getNomCours() {
         return nomCours;
@@ -47,7 +47,7 @@ public class Cours {
 
     /**
      * Nous donne l'indice d'un cours dans la liste des cours.
-     * @return index
+     * @return L'indice du cours dans la liste des cours.
      */
     public int indice() {
         int index;
@@ -61,7 +61,7 @@ public class Cours {
 
     /**
      * Affiche le cours
-     * @return nomCours
+     * @return Le nom du cours sous forme de String.
      */
     @Override
     public String toString() {
@@ -74,7 +74,7 @@ public class Cours {
     /**
      * Nous donne la liste des etudiants qui participe au cours.
      *
-     * @return participe
+     * @return Une arrayliste d'étudiants qui participent à un cours.
      */
     public ArrayList<String> participe() {
         ArrayList<String> participe = new ArrayList<String>();
@@ -93,7 +93,7 @@ public class Cours {
 
     /**
      * Nous dit si c'est un cours ou un TD.
-     * @return coursOuTD
+     * @return 1 si c'est un TD, 0 si c'est un cours.
      */
     public int infoCoursOuTD (){
         int coursOuTD;
@@ -123,7 +123,7 @@ public class Cours {
     /**
      *Nous donne la liste des etudiants inscrit au cours.
      * @param max
-     * @return listeInscrits
+     * @return Une arrayliste des étudiants inscrits aux cours.
      */
     public ArrayList<String> listeInscrits (int max){
         if (infoCoursOuTD() == 0){
@@ -144,7 +144,7 @@ public class Cours {
 
     /**
      * Nous retourne le nombre de TD qu'une matiere a.
-     * @return nombreTD
+     * @return Le nombre de TD.
      */
     //Méthode pour compter nombreTD
     public int nombreTD (){
@@ -177,7 +177,7 @@ public class Cours {
 
     /**
      * Nous retourne la liste des TD qu'un cours a.
-     * @return TD
+     * @return Un cours qui est un TD.
      */
     //Methode qui cree une liste de Cours qui correspond aux differents TDs
     public ArrayList<Cours> TD (){
@@ -192,7 +192,7 @@ public class Cours {
     /**
      * Affecte les etudiants aux TDs sans tenir compte des conflits.
      * @param max
-     * @return affecteTD
+     * @return Une arrayliste d'arrayliste de String avec les Id des etudiants affectés à chaque TD créé.
      */
     //Méthode qui affecte "grossierement" (sans tenir compte des conflits de creneau) les etudiants a un TD pour la matiere
     public  ArrayList<ArrayList<String>> affecteTD(int max){
@@ -223,7 +223,7 @@ public class Cours {
 
     /**
      * Nous retourne la liste des cours qui ont lieu en meme temps que notre cours.
-     * @return coursEnConflit
+     * @return Une arrayliste de cours en conflit.
      */
     //Methode qui nous retourne la liste des Cours qui ont lieu en même temps que notre Cours donne
     public ArrayList<Cours> coursEnConflit (){
@@ -254,7 +254,7 @@ public class Cours {
 
     /**
      * Nous retourne le CM d'un TD.
-     * @return CM
+     * @return Un cours qui correspond à un TD.
      */
     //Methode qui nous retourne le CM d'un TD
     public Cours CM (){
@@ -277,7 +277,7 @@ public class Cours {
     /**
      * Nous dit si notre cours est egal a un cours donné.
      * @param c
-     * @return equals
+     * @return Vrai si les cours sont égaux, false sinon.
      */
     public boolean equals (Cours c){
         if (c.getNomCours().equals(getNomCours())){
@@ -291,7 +291,7 @@ public class Cours {
     /**
      * Nous dit si le cours st contenu dans la liste donnee.
      * @param c
-     * @return contains
+     * @return Vrai si la liste contient le cours, faux sinon.
      */
     public boolean contenuDansListe (ArrayList<Cours> c){
         int i = 0;

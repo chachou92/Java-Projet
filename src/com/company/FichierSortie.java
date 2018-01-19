@@ -13,11 +13,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Classe qui gère la création et l'écriture du fichier de sortie. Le fichier de sortie se lit de la façon suivante: à gauche se trouvent les cours et les TD, suivis de la liste des etudiants qui y participent.
+ */
 public abstract class FichierSortie {
 
 
     /**
-     * Retourne la liste de tous les cours.
+     * Retourne la liste de tous les cours et TD.
      * @param max
      * @return listeFinale
      */
@@ -60,7 +63,7 @@ public abstract class FichierSortie {
 
 
     /**
-     * Ecrit dans le fichier sortie.csv qui sera le fichier de sortie du programme.
+     * Ecrit dans le fichier fichiersortie.csv qui sera le fichier de sortie du programme.
      * @param max
      * @return fichierSortie
      */
