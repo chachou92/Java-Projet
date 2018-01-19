@@ -32,7 +32,7 @@ public class Cours {
 
     /**
      * Retourne le nom du cours.
-     * @return
+     * @return nomCours
      */
     public String getNomCours() {
         return nomCours;
@@ -47,7 +47,7 @@ public class Cours {
 
     /**
      * Nous donne l'indice d'un cours dans la liste des cours.
-     * @return
+     * @return index
      */
     public int indice() {
         int index;
@@ -61,7 +61,7 @@ public class Cours {
 
     /**
      * Affiche le cours
-     * @return
+     * @return nomCours
      */
     @Override
     public String toString() {
@@ -74,7 +74,7 @@ public class Cours {
     /**
      * Nous donne la liste des etudiants qui participe au cours.
      *
-     * @return retourne une liste
+     * @return participe
      */
     public ArrayList<String> participe() {
         ArrayList<String> participe = new ArrayList<String>();
@@ -93,7 +93,7 @@ public class Cours {
 
     /**
      * Nous dit si c'est un cours ou un TD.
-     * @return
+     * @return coursOuTD
      */
     public int infoCoursOuTD (){
         int coursOuTD;
@@ -107,7 +107,7 @@ public class Cours {
     /**
      * Nous donne l'indice d'un cours dans une liste donnée.
      * @param c
-     * @return
+     * @return indice
      */
     public int indiceDansListe (ArrayList<Cours> c){
         for (int i = 0; i < c.size(); i++){
@@ -123,7 +123,7 @@ public class Cours {
     /**
      *Nous donne la liste des etudiants inscrit au cours.
      * @param max
-     * @return
+     * @return listeInscrits
      */
     public ArrayList<String> listeInscrits (int max){
         if (infoCoursOuTD() == 0){
@@ -144,7 +144,7 @@ public class Cours {
 
     /**
      * Nous retourne le nombre de TD qu'une matiere a.
-     * @return
+     * @return nombreTD
      */
     //Méthode pour compter nombreTD
     public int nombreTD (){
@@ -177,7 +177,7 @@ public class Cours {
 
     /**
      * Nous retourne la liste des TD qu'un cours a.
-     * @return
+     * @return TD
      */
     //Methode qui cree une liste de Cours qui correspond aux differents TDs
     public ArrayList<Cours> TD (){
@@ -192,7 +192,7 @@ public class Cours {
     /**
      * Affecte les etudiants aux TDs sans tenir compte des conflits.
      * @param max
-     * @return
+     * @return affecteTD
      */
     //Méthode qui affecte "grossierement" (sans tenir compte des conflits de creneau) les etudiants a un TD pour la matiere
     public  ArrayList<ArrayList<String>> affecteTD(int max){
@@ -223,7 +223,7 @@ public class Cours {
 
     /**
      * Nous retourne la liste des cours qui ont lieu en meme temps que notre cours.
-     * @return
+     * @return coursEnConflit
      */
     //Methode qui nous retourne la liste des Cours qui ont lieu en même temps que notre Cours donne
     public ArrayList<Cours> coursEnConflit (){
@@ -254,7 +254,7 @@ public class Cours {
 
     /**
      * Nous retourne le CM d'un TD.
-     * @return
+     * @return CM
      */
     //Methode qui nous retourne le CM d'un TD
     public Cours CM (){
@@ -277,7 +277,7 @@ public class Cours {
     /**
      * Nous dit si notre cours est egal a un cours donné.
      * @param c
-     * @return
+     * @return equals
      */
     public boolean equals (Cours c){
         if (c.getNomCours().equals(getNomCours())){
@@ -291,7 +291,7 @@ public class Cours {
     /**
      * Nous dit si le cours st contenu dans la liste donnee.
      * @param c
-     * @return
+     * @return contains
      */
     public boolean contenuDansListe (ArrayList<Cours> c){
         int i = 0;

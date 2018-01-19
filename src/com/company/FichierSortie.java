@@ -19,7 +19,7 @@ public abstract class FichierSortie {
     /**
      * Retourne la liste de tous les cours.
      * @param max
-     * @return
+     * @return listeFinale
      */
     public static ArrayList<ArrayList<String>> fichierFinal(int max) {
         ArrayList<Cours> listeCours = new ArrayList<Cours>();
@@ -62,7 +62,7 @@ public abstract class FichierSortie {
     /**
      * Ecrit dans le fichier sortie.csv qui sera le fichier de sortie du programme.
      * @param max
-     * @return
+     * @return fichierSortie
      */
     public static File fichierSortie(int max) {
         String resultat = "";

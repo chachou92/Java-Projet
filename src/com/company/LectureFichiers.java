@@ -12,7 +12,7 @@ public abstract class LectureFichiers {
 
     /**
      * Permet de lire le fichier etu.csv
-     * @return
+     * @return fichier
      */
     public static String lireFichierEtu(){
 
@@ -43,7 +43,7 @@ public abstract class LectureFichiers {
 
     /**
      *Retourne chaque information sur chaque etudiant.
-     * @return
+     * @return infoEtudiant
      */
     public static ArrayList<ArrayList<String>> infoEtudiant() {
 
@@ -69,7 +69,7 @@ public abstract class LectureFichiers {
 
     /**
      * Lit le fichier edt.csv.
-     * @return
+     * @return fichier
      */
     public static String lireFichierEdt(){
         try {
@@ -98,7 +98,7 @@ public abstract class LectureFichiers {
 
     /**
      * Retourne les informations sur l'emploi du temps.
-     * @return
+     * @return fichier
      */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps() {
 
@@ -125,7 +125,7 @@ public abstract class LectureFichiers {
 
     /**
      * Retourne la liste des cours qui se passent en meme temps.
-     * @return
+     * @return fichier
      */
     public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps();
@@ -154,7 +154,7 @@ public abstract class LectureFichiers {
     /**
      * Lit les fichiers tapes a la main.
      * @param nom
-     * @return
+     * @return fichier
      */
     public static String lireFichierEtu(String nom){
 
@@ -187,7 +187,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne chaque information sur chaque etudiant du fichier tape a la main.
      * @param nom
-     * @return
+     * @return infoEtu
      */
     public static ArrayList<ArrayList<String>> infoEtudiant(String nom) {
 
@@ -216,7 +216,7 @@ public abstract class LectureFichiers {
     /**
      * Lit le fichier emploi du temps tape a la main.
      * @param nom
-     * @return
+     * @return fichier
      */
     public static String lireFichierEdt(String nom){
         try {
@@ -246,7 +246,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne les informations sur l'emploi du temps tape a la main.
      * @param nom
-     * @return
+     * @return infoEdt
      */
     public static ArrayList<ArrayList<String>> infoEmploisDuTemps(String nom) {
 
@@ -275,7 +275,7 @@ public abstract class LectureFichiers {
     /**
      * Retourne la liste des cours qui se passent en meme temps depuis le fichier tape a la main.
      * @param nom
-     * @return
+     * @return coursEnMemeTemps
      */
     public static ArrayList<ArrayList<Cours>> coursEnMemeTemps (String nom){
         ArrayList<ArrayList<String>> infoEdt = infoEmploisDuTemps(nom);

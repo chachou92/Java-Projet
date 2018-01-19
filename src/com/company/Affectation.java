@@ -13,7 +13,7 @@ public abstract class Affectation {
 
     /**
      * Instancie les objets Etudiants a partir du fichier etu.csv
-     * @return
+     * @return listeEtudiants
      */
     public static ArrayList<Etudiant> listeEutudiants() {
         ArrayList<Etudiant> listeEtu = new ArrayList<Etudiant>();
@@ -28,7 +28,7 @@ public abstract class Affectation {
     /**
      * Retourne la liste des etudiants qui ont des conflits.
      * @param max
-     * @return
+     * @return etusAProblemes
      */
     public static ArrayList<Etudiant> listeEtudiantsAProbleme(int max) {
         ArrayList<Etudiant> etusAProblemes = new ArrayList<Etudiant>();
@@ -43,7 +43,7 @@ public abstract class Affectation {
     /**
      * Retourne la liste des etudiants qui n'ont pas de conflits.
      * @param max
-     * @return
+     * @return etuSansProblemes
      */
     public static ArrayList<Etudiant> listeEtudiantsSansProbleme(int max) {
         ArrayList<Etudiant> etusSansProblemes = new ArrayList<Etudiant>();
@@ -73,7 +73,7 @@ public abstract class Affectation {
      * Indique si deux listes d'etudiants sont egales ou pas.
      * @param c1
      * @param c2
-     * @return
+     * @return verif
      */
     public static boolean listesEgales(ArrayList<Cours> c1, ArrayList<Cours> c2) {
         int min = min(c1.size(), c2.size());
@@ -93,7 +93,7 @@ public abstract class Affectation {
      * @param e2
      * @param c
      * @param max
-     * @return
+     * @return boolean
      */
     public static boolean peuventChanger(Etudiant e1, Etudiant e2, ArrayList<Cours> c, int max) {
         //Test si l'Arraylist de Cours pose probleme a l'etudiant 1

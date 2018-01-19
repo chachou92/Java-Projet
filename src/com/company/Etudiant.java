@@ -23,13 +23,13 @@ public class Etudiant {
 
     /**
      * Retourne l'identifiant d'un etudiant.
-     * @return
+     * @return id
      */
     public String getId () {return id;}
 
     /**
      * Affiche l'etudiant.
-     * @return
+     * @return id
      */
     @Override
     public String toString (){
@@ -39,7 +39,7 @@ public class Etudiant {
     /**
      * Affiche la liste des cours dans lesquels l'etudiant est inscrit.
      * @param max
-     * @return
+     * @return coursInscrit
      */
     public ArrayList<Cours> coursInscrit (int max){
         ArrayList<Cours> coursInscrit = new ArrayList<Cours>();
@@ -75,7 +75,7 @@ public class Etudiant {
     /**
      * Retourne la liste des cours que l'etudiant suit et qui posent probleme.
      * @param max
-     * @return
+     * @return coursProbleme
      */
     public ArrayList<ArrayList<Cours>> coursProbleme (int max){
         ArrayList<ArrayList<Cours>> coursProbleme = new ArrayList<ArrayList<Cours>>();
@@ -106,7 +106,7 @@ public class Etudiant {
     /**
      * Indique si l'etudiant a des cours en conflit.
      * @param max
-     * @return
+     * @return verifCoursEnConflit
      */
     public boolean verifCoursEnConflit (int max){
         if (coursProbleme(max).size() !=0){
@@ -121,7 +121,7 @@ public class Etudiant {
      * Indique le TD dans lequel l'etudiant est inscrit.
      * @param c
      * @param max
-     * @return
+     * @return numeroTDMatiere
      */
     public Cours numeroTDMatiere (Cours c, int max){
         ArrayList<Cours> TD = c.TD();
