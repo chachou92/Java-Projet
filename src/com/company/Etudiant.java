@@ -110,10 +110,10 @@ public class Etudiant {
     }
 
     //Methode pour savoir a quel TD participe l'etudiant pour une matiere donnee
-    public Cours numeroTDMatiere (Cours c){
+    public Cours numeroTDMatiere (Cours c,int max){
         ArrayList<Cours> TD = c.TD();
         for (int i = 0; i < TD.size(); i++){
-            if (TD.get(i).participe().contains(getId())){
+            if (TD.get(i).listeInscrits(max).contains(getId())){
                 return TD.get(i);
             }
         }

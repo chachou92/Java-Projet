@@ -106,30 +106,39 @@ public abstract class Affectation {
         System.out.println("Fait 1");
         ArrayList<Etudiant> al2 = listeEtudiantsSansProbleme(max);
         System.out.println("Fait 2");
+        int tailleFinale = al2.size();
+        int chachou=0;
         while (al1.size() != 0){
+            System.out.println("chachou: "+chachou);
             //On prend le premier etudiant de la liste d'etudiants a probleme
             Etudiant et = new Etudiant(al1.get(0).getId());
             //On regarde tous ses creneaux qui posent probleme
             for(int i = 0; i < et.coursProbleme(max).size();i++) {
                 //On cherche dans la liste un etudiant pour qui ce creneau n'est pas un probleme
-                System.out.println("i = "+i);
-                for (int k = 0; k < al2.size(); k++) {
-                    System.out.println("k = "+k);
+                //System.out.println("i = "+i);
+                for (int k = 0; k < tailleFinale; k++) {
+                    //System.out.println("k = "+k);
                     //On prend un etudiant de cette liste
                     Etudiant ch = new Etudiant(al2.get(k).getId());
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
                     //On regarde si les deux peuvent changer
                     if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
-                        echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM()).listeInscrits(max));
+                        echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM(),max).listeInscrits(max));
+                        System.out.println("Je suis dans le if");
                         //On met a jour la liste d'etudiant a probleme et sans probleme
-                        al1.remove(et);
-                        System.out.println(listeEtudiantsAProbleme(max));
+                        al1.remove(al1.get(0));
+                        System.out.print("al1:");
+                        System.out.println(al1);
+                        System.out.println("al2");
+
                         al2.add(et);
+                        System.out.println(al2);
                         break;
                     //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
                     }
                 }
             }
+            chachou++;
         }
     }
 
