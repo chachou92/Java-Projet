@@ -57,7 +57,6 @@ public class Cours {
     }
 
 
-
     //Méthode pour savoir si c'est un cours un TD
     public int infoCoursOuTD (){
         int coursOuTD;
@@ -66,6 +65,33 @@ public class Cours {
         else
             coursOuTD = 0;
         return coursOuTD;
+    }
+
+    public int indiceDansListe (ArrayList<Cours> c){
+        for (int i = 0; i < c.size(); i++){
+            if (this.equals(c.get(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //Methode pour avoir la liste des etudiants inscrits que ce soit dans des TDs ou des CMs
+    public ArrayList<String> listeInscrits (int max){
+        if (infoCoursOuTD() == 0){
+            return participe();
+        }
+        else
+        {
+            ArrayList<String> listeInscrits = new ArrayList<String>();
+            ArrayList<ArrayList<String>> affectationTD = CM().affecteTD(max);
+            char indicechar = getNomCours().charAt(getNomCours().length() - 1);
+            String indiceString = ""+indicechar;
+            int indiceint = Integer.parseInt(indiceString) - 1;
+            listeInscrits.addAll(affectationTD.get(indiceint));
+            return listeInscrits;
+        }
+
     }
 
     //Méthode pour compter nombreTD

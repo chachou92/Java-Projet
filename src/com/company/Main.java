@@ -1,9 +1,11 @@
+
 package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static int max = 50;
 
     public static void main(String[] args) {
 
@@ -12,7 +14,7 @@ public class Main {
         //Options du menu
         System.out.println("Que voulez-vous faire?");
 
-       int reponse;
+        int reponse;
 
         do {
             System.out.println("0. Quitter le programme");
@@ -23,55 +25,59 @@ public class Main {
 
             Scanner scan = new Scanner(System.in);
             reponse = scan.nextInt();
+            //On donne une valeur par defaut a max
 
-           //On verifie que la réponse est correcte
+            //On verifie que la réponse est correcte
             try  {
                 if ( !(reponse >=0 && reponse <=4) )
                     throw new ReponseException ();
 
-               switch (reponse){
-                  case (1) :
-                     String fichierEtudiant = LectureFichiers.lireFichierEtu();
-                     String fichierEdt = LectureFichiers.lireFichierEdt();
-                     System.out.println("Le fichier des etudiants:");
-                     System.out.println(fichierEtudiant);
-                     System.out.println("Le fichier de l'emploi du temps");
-                     System.out.println(fichierEdt);
+                switch (reponse){
+                    case (1) :
+                        String fichierEtudiant = LectureFichiers.lireFichierEtu();
+                        String fichierEdt = LectureFichiers.lireFichierEdt();
+                        System.out.println("Le fichier des etudiants:");
+                        System.out.println(fichierEtudiant);
+                        System.out.println("Le fichier de l'emploi du temps");
+                        System.out.println(fichierEdt);
 
-                     break;
+                        break;
 
-                  case (2) :
-                      System.out.println("Saisir le nom du fichier d'etudiants.");
-                      String bidon = scan.nextLine();
-                      String reponse1 = scan.nextLine();
-                      System.out.println("Saisir le nom du fichier d'emploi du temps.");
-                      String reponse2 = scan.nextLine();
+                    case (2) :
+                        System.out.println("Saisir le nom du fichier d'etudiants.");
+                        String bidon = scan.nextLine();
+                        String reponse1 = scan.nextLine();
+                        System.out.println("Saisir le nom du fichier d'emploi du temps.");
+                        String reponse2 = scan.nextLine();
 
-                      String fichierEtudiant2 = LectureFichiers.lireFichierEtu(reponse1);
-                      String fichierEdt2 = LectureFichiers.lireFichierEdt(reponse2);
-                      System.out.println("Le fichier des etudiants:");
-                      System.out.println(fichierEtudiant2);
-                      System.out.println("Le fichier de l'emploi du temps");
-                      System.out.println(fichierEdt2);
+                        String fichierEtudiant2 = LectureFichiers.lireFichierEtu(reponse1);
+                        String fichierEdt2 = LectureFichiers.lireFichierEdt(reponse2);
+                        System.out.println("Le fichier des etudiants:");
+                        System.out.println(fichierEtudiant2);
+                        System.out.println("Le fichier de l'emploi du temps");
+                        System.out.println(fichierEdt2);
 
-                     break;
+                        break;
 
-                  case (3) :
+                    case (3) :
 
-                      //Normalement, on lance l'affectattion et on affiche dans le fichier de sortie.
-                      Affectation.affectationFinale(40);
-                      //FichierSortie.fichierSortie(40);
-                      //System.out.println(FichierSortie.fichierFinal(40));
+                        //Normalement, on lance l'affectattion et on affiche dans le fichier de sortie.
+                        //Affectation.affectationFinale(max);
 
-                     break;
+                        //On cree le fichier de sortie avec l'affectation
+                        //FichierSortie.fichierSortie(max);
+                        //System.out.println(FichierSortie.fichierFinal(max));
 
-                  case (4) :
+                        break;
 
+                    case (4) :
+                        System.out.println("Saisir le nombre maximum d'eleves par TD.");
+                        int nb= scan.nextInt();
+                        max = nb;
 
+                        break;
 
-                     break;
-
-               }
+                }
             }
             catch (ReponseException e){
                 System.out.println("Merci de taper 0, 1, 2, 3 ou 4 et de relancer le programme");
@@ -87,4 +93,3 @@ public class Main {
 
     }
 }
-

@@ -51,7 +51,6 @@ public abstract class Affectation {
         al1.add(e2.getId());
     }
 
-    //methode qui compare deux listes
     public static boolean listesEgales(ArrayList<Cours> c1, ArrayList<Cours> c2) {
         int min = min(c1.size(), c2.size());
         boolean verif = true;
@@ -74,6 +73,7 @@ public abstract class Affectation {
                 test1 = true;
             }
         }
+
         //Test si l'Arraylist de Cours ne pose pas problème a l'etudiant 2
         boolean test2 = false;
         for (int i = 0; i < e2.coursProbleme(max).size(); i++) {
@@ -82,12 +82,14 @@ public abstract class Affectation {
             }
 
         }
+
         //Test si l'etudiant 2 participe bien au cours a echanger
         boolean test3 = false;
             for (int k = 0; k < c.size(); k++) {
                 if (c.get(k).CM().contenuDansListe(e2.coursInscrit(max))) {
                     test3 = true;
                 }
+
             }
         if (test1 == true && test2 == false && test3 == true) {
             return true;
@@ -97,37 +99,35 @@ public abstract class Affectation {
     }
 
     //Affectation
-    //Methode qui regle les problemes de tous les etudiants (en principe) --> probleme.
+    //Methode qui regle les problemes de tous les etudiants (en principe)
     public static void affectationFinale(int max){
         //On itere l'algorithme tant qu'il reste des etudiants a probleme
-        ArrayList<Etudiant> al = new ArrayList<Etudiant>();
-        al.addAll(listeEtudiantsAProbleme(max));
+        ArrayList<Etudiant> al1 = listeEtudiantsAProbleme(max);
         System.out.println("Fait 1");
-        ArrayList<Etudiant> al2 = new ArrayList<Etudiant>();
-        al2.addAll(listeEtudiantsSansProbleme(max));
+        ArrayList<Etudiant> al2 = listeEtudiantsSansProbleme(max);
         System.out.println("Fait 2");
-        while (al.size() != 0){
+        while (al1.size() != 0){
             //On prend le premier etudiant de la liste d'etudiants a probleme
-            Etudiant et = new Etudiant(al.get(0).getId());
+            Etudiant et = new Etudiant(al1.get(0).getId());
             //On regarde tous ses creneaux qui posent probleme
             for(int i = 0; i < et.coursProbleme(max).size();i++) {
                 //On cherche dans la liste un etudiant pour qui ce creneau n'est pas un probleme
-                System.out.println("i: "+i);
+                System.out.println("i = "+i);
                 for (int k = 0; k < al2.size(); k++) {
+                    System.out.println("k = "+k);
                     //On prend un etudiant de cette liste
                     Etudiant ch = new Etudiant(al2.get(k).getId());
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
-                    System.out.println("k: "+k);
                     //On regarde si les deux peuvent changer
-                    if (!peuventChanger(et,ch,et.coursProbleme(max).get(i), max)) {
-                        echangeEtudiants(et, ch, probleme.participe(), ch.numeroTDMatiere(probleme.CM()).participe());
+                    if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
+                        echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM()).listeInscrits(max));
                         //On met a jour la liste d'etudiant a probleme et sans probleme
-                        al.remove(et);
-                        System.out.println(al);
+                        al1.remove(et);
+                        System.out.println(listeEtudiantsAProbleme(max));
                         al2.add(et);
                         break;
-                    }
                     //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
+                    }
                 }
             }
         }
