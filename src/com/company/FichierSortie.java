@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public abstract class FichierSortie {
 
-    //On prend la liste de tous les cours
+    //On prend la liste de tous les cours/TD et des etudiants associes.
     public static ArrayList<ArrayList<String>> fichierFinal(int max) {
         ArrayList<Cours> listeCours = new ArrayList<Cours>();
         ArrayList<ArrayList<String>> al = new ArrayList<ArrayList<String>>();

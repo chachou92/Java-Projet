@@ -128,7 +128,7 @@ public abstract class LectureFichiers {
 
     //Lecture de fichiers qu'on tape à la main:
 
-    //Methode pour lire le fichier détudiant tapé à la main
+    //Methode pour lire le fichier d'étudiant entre en parametre
     public static String lireFichierEtu(String nom){
 
         try {
@@ -178,7 +178,7 @@ public abstract class LectureFichiers {
         return infoEtu;
     }
 
-    //Methode pour lire le fichier edt.csv
+    //Methode pour lire le fichier d'emploi du temps entre en parametre
     public static String lireFichierEdt(String nom){
         try {
             //Ouverture et lecture du fichier emploi du temps

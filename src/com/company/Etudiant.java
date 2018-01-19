@@ -2,8 +2,8 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
-/* On créé une classe Etudiant qui:
-
+/* On créé une classe Etudiant qui a comme attribut un Id, et qui donne des informations sur l'emploi du temps
+et les conflits de chaque etudiant.
 */
 
 public class Etudiant {
@@ -24,7 +24,9 @@ public class Etudiant {
         return id;
     }
 
+    //Methode qui donne les cours et les TD auquel est inscrit a priori un etudiant
     public ArrayList<Cours> coursInscrit (int max){
+        //On instancie nos objets Cours a partir du fichier etu.
         ArrayList<Cours> coursInscrit = new ArrayList<Cours>();
         ArrayList<Cours> listeCours = new ArrayList<Cours>();
         ArrayList<String> participe = new ArrayList<String>();
@@ -34,11 +36,13 @@ public class Etudiant {
             Cours c = new Cours(participe.get(i));
             listeCours.add(c);
         }
+        //On regarde si l'etudiant est inscrit au cours.
         for (int i = 0; i < listeCours.size(); i++){
             if (listeCours.get(i).participe().contains(id)){
                 coursInscrit.add(listeCours.get((i)));
             }
         }
+        //On regarde si l'etuduant est affecte au TD.
         for (int i = 0; i < listeCours.size(); i++){
             if (listeCours.get(i).TD().size() !=0){
                 ArrayList<ArrayList<String>> affect = listeCours.get(i).affecteTD(max);
