@@ -67,6 +67,15 @@ public class Cours {
         return coursOuTD;
     }
 
+    public int indiceDansListe (ArrayList<Cours> c){
+        for (int i = 0; i < c.size(); i++){
+            if (this.equals(c.get(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     //Methode pour avoir la liste des etudiants inscrits que ce soit dans des TDs ou des CMs
     public ArrayList<String> listeInscrits (int max){
         if (infoCoursOuTD() == 0){

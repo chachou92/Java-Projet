@@ -102,23 +102,29 @@ public abstract class Affectation {
     //Methode qui regle les problemes de tous les etudiants (en principe)
     public static void affectationFinale(int max){
         //On itere l'algorithme tant qu'il reste des etudiants a probleme
-        while (listeEtudiantsAProbleme(max).size() != 0){
+        ArrayList<Etudiant> al1 = listeEtudiantsAProbleme(max);
+        System.out.println("Fait 1");
+        ArrayList<Etudiant> al2 = listeEtudiantsSansProbleme(max);
+        System.out.println("Fait 2");
+        while (al1.size() != 0){
             //On prend le premier etudiant de la liste d'etudiants a probleme
-            Etudiant et = new Etudiant(listeEtudiantsAProbleme(max).get(0).getId());
+            Etudiant et = new Etudiant(al1.get(0).getId());
             //On regarde tous ses creneaux qui posent probleme
             for(int i = 0; i < et.coursProbleme(max).size();i++) {
                 //On cherche dans la liste un etudiant pour qui ce creneau n'est pas un probleme
-                for (int k = 0; k < listeEtudiantsSansProbleme(max).size(); k++) {
+                System.out.println("i = "+i);
+                for (int k = 0; k < al2.size(); k++) {
+                    System.out.println("k = "+k);
                     //On prend un etudiant de cette liste
-                    Etudiant ch = new Etudiant(listeEtudiantsSansProbleme(max).get(k).getId());
+                    Etudiant ch = new Etudiant(al2.get(k).getId());
                     Cours probleme = new Cours (et.coursProbleme(max).get(i).get(1).getNomCours());
                     //On regarde si les deux peuvent changer
                     if(peuventChanger(et,ch,et.coursProbleme(max).get(i), max)){
                         echangeEtudiants(et,ch, probleme.listeInscrits(max), ch.numeroTDMatiere(probleme.CM()).listeInscrits(max));
                         //On met a jour la liste d'etudiant a probleme et sans probleme
-                        listeEtudiantsAProbleme(max).remove(et);
+                        al1.remove(et);
                         System.out.println(listeEtudiantsAProbleme(max));
-                        listeEtudiantsSansProbleme(max).add(et);
+                        al2.add(et);
                         break;
                     //Si la condition n'est pas remplie on passe au a l'etudiant sans probleme suivant
                     }

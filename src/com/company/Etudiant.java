@@ -54,6 +54,9 @@ public class Etudiant {
         return coursInscrit;
     }
 
+
+
+
     //On gere les problemes d'affectation associes a l'etudiant
     //Methode pour savoir si un etudiant pose probleme
     public ArrayList<ArrayList<Cours>> coursProbleme (int max){
@@ -63,7 +66,19 @@ public class Etudiant {
             ArrayList<Cours> coursEnConflit = coursInscrit.get(i).coursEnConflit();
             if (coursEnConflit.size() != 0){
                 for (int j = i+1; j < coursInscrit.size(); j++){
-                    for (int k = 0; k < coursEnConflit.size(); k++){
+                    //ligne rajoutee pour tester nouvelle methode
+                    if (coursInscrit.get(j).contenuDansListe(coursEnConflit)){
+                        ArrayList<Cours> aux = new ArrayList<Cours>();
+                        Cours e = new Cours(coursInscrit(max).get(i).getNomCours());
+                        aux.add(e);
+                        int indice =coursInscrit.get(j).indiceDansListe(coursEnConflit);
+                        //System.out.println("indice = "+indice);
+                        Cours f = new Cours (coursEnConflit.get(indice).getNomCours());
+                        aux.add(f);
+                        coursProbleme.add(aux);
+                    }
+
+                   /* for (int k = 0; k < coursEnConflit.size(); k++){
                         if(coursEnConflit.get(k).getNomCours().equals(coursInscrit.get(j).getNomCours())){
                             ArrayList<Cours> aux = new ArrayList<Cours>();
                             Cours e = new Cours(coursInscrit.get(i).getNomCours());
@@ -72,7 +87,7 @@ public class Etudiant {
                             aux.add(f);
                             coursProbleme.add(aux);
                         }
-                    }
+                    }*/
                 }
             }
         }

@@ -7,7 +7,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class FichierSortie {
 
@@ -52,25 +56,35 @@ public abstract class FichierSortie {
 
     //On ecrit dans un fichier sortie.csv
     public static File fichierSortie(int max) {
+        String resultat = "";
+        //On met un point virgule entre chaque element de la sous liste et un retour a la ligne a la fin
+        for(ArrayList<String> liste : FichierSortie.fichierFinal(max)){
+            for(String str : liste){
+                resultat = resultat+str + ";";
+            }
+            resultat= resultat+"\n";
+        }
+        //On met toutes les lignes dans une liste
+        ArrayList<String> al = new ArrayList<String>(Arrays.asList(resultat.split("\n")));
         try {
-            File file = new File(System.getProperty("user.dir") + "/fichierSortie.csv");
-            for (int i = 0; i < fichierFinal(max).size(); i++) {
-                for (String str : fichierFinal(max).get(i)) {
-
-                    //File file = new File(System.getProperty("user.dir")+"/fichierSortie.csv");
-                    file.createNewFile();
-
-                    FileWriter fw = new FileWriter(file.getAbsoluteFile());
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    bw.write(str);
-                    //bw.write("\n");
-                    bw.close();
-                }
+            File file = new File (System.getProperty("user.dir") + "/fichierSortie.csv");
+            file.createNewFile();
+            Path path = Paths.get(System.getProperty("user.dir") + "/fichierSortie.csv");
+            if(!(Files.exists(path))){
+                //On cree le fichier si il n'existe pas encore
+                Files.createFile(path);
+                //On ecrit le contenu de la liste dans le fichier
+                Files.write(path,al);
+            }
+            else{
+                //Si il existe deja, on reecrit le nouveau contenu de la liste dans le fichier de sortie
+                Files.write(path,al);
             }
             return file;
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println ("Erreur dans la creation du fichier de sortie.");
         }
         return null;
     }
